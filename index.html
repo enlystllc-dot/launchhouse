@@ -307,28 +307,217 @@
     .stat-value { font-family:"Space Grotesk"; font-size:clamp(42px,4vw,62px); line-height:.95; letter-spacing:-.055em; color:#f3f4f5; }
 
     /* STUDENT BUILDS */
-    .student-builds { background:#fff; overflow:hidden; }
-    .student-builds .section-head { margin-bottom:32px; }
-    .student-builds-note { color:#7d8386; font-size:12px; margin-top:8px; }
-    .carousel-shell { position:relative; overflow:hidden; margin-top:28px; }
-    .carousel-shell::before, .carousel-shell::after { content:""; position:absolute; top:0; bottom:0; width:110px; z-index:2; pointer-events:none; }
-    .carousel-shell::before { left:0; background:linear-gradient(90deg,#fff 5%,rgba(255,255,255,0)); }
-    .carousel-shell::after { right:0; background:linear-gradient(270deg,#fff 5%,rgba(255,255,255,0)); }
-    .student-track { display:flex; width:max-content; gap:14px; animation:studentScroll 32s linear infinite; padding:10px 0 22px; }
-    .carousel-shell:hover .student-track { animation-play-state:paused; }
-    .student-card { width:310px; flex:0 0 310px; background:#f8f7f2; border:1px solid rgba(12,14,16,.09); border-radius:22px; padding:20px; box-shadow:0 12px 34px rgba(12,14,16,.06); }
-    .student-card-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-    .student-avatar { width:46px; height:46px; border-radius:50%; display:grid; place-items:center; background:#101416; color:var(--lime); font-family:"Space Grotesk"; font-weight:800; }
-    .student-sample { font-size:9px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#8a6b00; background:#fff0ad; border:1px solid #f0d777; border-radius:999px; padding:6px 8px; }
-    .student-name { margin-top:16px; font-family:"Space Grotesk"; font-weight:700; font-size:20px; letter-spacing:-.03em; }
-    .student-meta { color:#73797c; font-size:12px; margin-top:2px; }
-    .student-idea { margin-top:16px; min-height:52px; font-size:15px; line-height:1.3; color:#24292b; }
-    .student-data { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
-    .student-stat { background:#fff; border:1px solid rgba(12,14,16,.07); border-radius:14px; padding:11px; }
-    .student-stat span { display:block; color:#8b9194; font-size:9px; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
-    .student-stat strong { display:block; margin-top:5px; font-family:"Space Grotesk"; font-size:18px; letter-spacing:-.03em; }
-    @keyframes studentScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.student-builds {
+  background:#fff;
+  overflow:hidden;
+}
 
+.student-builds .section-head {
+  margin-bottom:32px;
+}
+
+.student-builds-note {
+  color:#7d8386;
+  font-size:12px;
+  margin-top:8px;
+}
+
+/* Horizontal carousel */
+.carousel-shell {
+  position:relative;
+  margin-top:28px;
+}
+
+.student-track {
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding:10px 2px 24px;
+  scrollbar-width:none;
+}
+
+.student-track::-webkit-scrollbar {
+  display:none;
+}
+
+/* 4 complete cards on desktop */
+.student-card {
+  width:calc((100% - 42px) / 4);
+  flex:0 0 calc((100% - 42px) / 4);
+  scroll-snap-align:start;
+
+  background:#f8f7f2;
+  border:1px solid rgba(12,14,16,.09);
+  border-radius:22px;
+  padding:20px;
+
+  box-shadow:0 12px 34px rgba(12,14,16,.06);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.student-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 18px 42px rgba(12,14,16,.10);
+  border-color:rgba(12,14,16,.15);
+}
+
+.student-card-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.student-avatar {
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#101416;
+  color:var(--lime);
+  font-family:"Space Grotesk";
+  font-weight:800;
+  flex:0 0 auto;
+}
+
+.student-sample {
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#8a6b00;
+  background:#fff0ad;
+  border:1px solid #f0d777;
+  border-radius:999px;
+  padding:6px 8px;
+  white-space:nowrap;
+}
+
+.student-name {
+  margin-top:16px;
+  font-family:"Space Grotesk";
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:-.03em;
+}
+
+.student-meta {
+  color:#73797c;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.student-idea {
+  margin-top:16px;
+  min-height:64px;
+  font-size:15px;
+  line-height:1.3;
+  color:#24292b;
+}
+
+.student-data {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
+}
+
+.student-stat {
+  background:#fff;
+  border:1px solid rgba(12,14,16,.07);
+  border-radius:14px;
+  padding:11px;
+}
+
+.student-stat span {
+  display:block;
+  color:#8b9194;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:800;
+}
+
+.student-stat strong {
+  display:block;
+  margin-top:5px;
+  font-family:"Space Grotesk";
+  font-size:18px;
+  letter-spacing:-.03em;
+}
+
+/* Carousel controls */
+.carousel-controls {
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:8px;
+}
+
+.carousel-btn {
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(12,14,16,.12);
+  background:#fff;
+  color:#111;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:20px;
+  line-height:1;
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.carousel-btn:hover {
+  background:#111416;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.carousel-btn:disabled {
+  opacity:.35;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* Tablet */
+@media (max-width:980px) {
+  .student-card {
+    width:calc((100% - 14px) / 2);
+    flex-basis:calc((100% - 14px) / 2);
+  }
+}
+
+/* Mobile: exactly 1 card */
+@media (max-width:700px) {
+  .student-card {
+    width:100%;
+    flex-basis:100%;
+  }
+
+  .carousel-controls {
+    justify-content:center;
+    margin-top:10px;
+  }
+
+  .carousel-btn {
+    width:44px;
+    height:44px;
+  }
+}
     /* TEAM */
     .team { background:#fff; }
     .team-title { font-family:"Space Grotesk"; font-size:clamp(38px,4.6vw,62px); letter-spacing:-.055em; margin:0 0 38px; color:#10243a; }
@@ -783,37 +972,247 @@
     </section>
 
     <!-- STUDENT BUILDS -->
-    <section class="section student-builds">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">What founders are building</div>
-          <h2 class="display">Real ideas. Real builds.<br>Built fast.</h2>
-          <p>See the kind of businesses people can take from idea to first version. The cards below are sample placeholders until verified student data is added.</p>
-          <div class="student-builds-note"></div>
-        </div>
-        <div class="carousel-shell" aria-label="Scrolling startup build examples">
-          <div class="student-track">
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AM</div><span class="student-sample">Sample build</span></div><div class="student-name">Aarav Mehta</div><div class="student-meta">24 · Bengaluru</div><div class="student-idea">AI invoice assistant for Indian small businesses.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹18.4K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">KS</div><span class="student-sample">Sample build</span></div><div class="student-name">Kavya Shah</div><div class="student-meta">22 · Mumbai</div><div class="student-idea">AI tool that turns raw product notes into ad creatives.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹24.7K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">RV</div><span class="student-sample">Sample build</span></div><div class="student-name">Rohan Verma</div><div class="student-meta">27 · Delhi NCR</div><div class="student-idea">Simple lead finder for local B2B service companies.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹31.2K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">PD</div><span class="student-sample">Sample build</span></div><div class="student-name">Priya Desai</div><div class="student-meta">25 · Pune</div><div class="student-idea">Personal finance tracker made for first-job earners.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹12.8K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AN</div><span class="student-sample">Sample build</span></div><div class="student-name">Aditya Nair</div><div class="student-meta">23 · Kochi</div><div class="student-idea">AI study planner that builds daily exam schedules.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹16.5K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">NT</div><span class="student-sample">Sample build</span></div><div class="student-name">Neha Tripathi</div><div class="student-meta">26 · Lucknow</div><div class="student-idea">WhatsApp-based booking system for neighborhood clinics.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹21.3K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">SI</div><span class="student-sample">Sample build</span></div><div class="student-name">Siddharth Iyer</div><div class="student-meta">28 · Chennai</div><div class="student-idea">AI sales assistant for small Indian recruitment firms.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹27.9K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+<section class="section student-builds">
+  <div class="wrap">
 
-            <!-- duplicated for seamless marquee -->
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AM</div><span class="student-sample">Sample build</span></div><div class="student-name">Aarav Mehta</div><div class="student-meta">24 · Bengaluru</div><div class="student-idea">AI invoice assistant for Indian small businesses.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹18.4K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">KS</div><span class="student-sample">Sample build</span></div><div class="student-name">Kavya Shah</div><div class="student-meta">22 · Mumbai</div><div class="student-idea">AI tool that turns raw product notes into ad creatives.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹24.7K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">RV</div><span class="student-sample">Sample build</span></div><div class="student-name">Rohan Verma</div><div class="student-meta">27 · Delhi NCR</div><div class="student-idea">Simple lead finder for local B2B service companies.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹31.2K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">PD</div><span class="student-sample">Sample build</span></div><div class="student-name">Priya Desai</div><div class="student-meta">25 · Pune</div><div class="student-idea">Personal finance tracker made for first-job earners.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹12.8K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AN</div><span class="student-sample">Sample build</span></div><div class="student-name">Aditya Nair</div><div class="student-meta">23 · Kochi</div><div class="student-idea">AI study planner that builds daily exam schedules.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹16.5K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">NT</div><span class="student-sample">Sample build</span></div><div class="student-name">Neha Tripathi</div><div class="student-meta">26 · Lucknow</div><div class="student-idea">WhatsApp-based booking system for neighborhood clinics.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹21.3K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
-            <article class="student-card"><div class="student-card-head"><div class="student-avatar">SI</div><span class="student-sample">Sample build</span></div><div class="student-name">Siddharth Iyer</div><div class="student-meta">28 · Chennai</div><div class="student-idea">AI sales assistant for small Indian recruitment firms.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹27.9K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+    <div class="section-head">
+      <div class="eyebrow">What founders are building</div>
+
+      <h2 class="display">
+        Real ideas. Real builds.<br>
+        Built fast.
+      </h2>
+
+      <p>
+        See the kind of businesses people can take from idea to first version.
+        The cards below are sample placeholders until verified student data is added.
+      </p>
+
+      <div class="student-builds-note">
+        </div>
+    </div>
+
+    <div class="carousel-shell">
+
+      <div
+        class="student-track"
+        id="studentTrack"
+        aria-label="Startup build examples"
+      >
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">AM</div>
+            <span class="student-sample">Sample build</span>
           </div>
-        </div>
-      </div>
-    </section>
 
+          <div class="student-name">Aarav Mehta</div>
+          <div class="student-meta">24 · Bengaluru</div>
+
+          <div class="student-idea">
+            AI Customer assistant for Indian small businesses.
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹68.4K per month</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>May 2026</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">KS</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Kavya Shah</div>
+          <div class="student-meta">22 · Mumbai</div>
+
+          <div class="student-idea">
+            AI tool that turns raw product notes into ad creatives.
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹24.7K</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>May 2026</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">RV</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Rohan Verma</div>
+          <div class="student-meta">27 · Delhi NCR</div>
+
+          <div class="student-idea">
+           UGC Campaign Management Platform for Brands
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹3.2L</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>Nov 2025</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">PD</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Priya Desai</div>
+          <div class="student-meta">25 · Pune</div>
+
+          <div class="student-idea">
+            Personal finance tracker and Planner
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹52.8K</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>Jan 2026</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">AN</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Aditya Nair</div>
+          <div class="student-meta">23 · Kochi</div>
+
+          <div class="student-idea">
+            CRM for Coaching Centres
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹80.5K</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>Jan 2026</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">NT</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Neha Tripathi</div>
+          <div class="student-meta">26 · Lucknow</div>
+
+          <div class="student-idea">
+            WhatsApp Sales Automation CRM for Businesses.
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹2.3L</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>Nov 2025</strong>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="student-card">
+          <div class="student-card-head">
+            <div class="student-avatar">SI</div>
+            <span class="student-sample">Sample build</span>
+          </div>
+
+          <div class="student-name">Siddharth Iyer</div>
+          <div class="student-meta">28 · Chennai</div>
+
+          <div class="student-idea">
+            AI sales assistant for small Indian recruitment firms.
+          </div>
+
+          <div class="student-data">
+            <div class="student-stat">
+              <span>MRR</span>
+              <strong>₹90.9K</strong>
+            </div>
+
+            <div class="student-stat">
+              <span>Launched</span>
+              <strong>Dec 2026</strong>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button
+          class="carousel-btn"
+          id="studentPrev"
+          type="button"
+          aria-label="Previous startup"
+        >
+          ←
+        </button>
+
+        <button
+          class="carousel-btn"
+          id="studentNext"
+          type="button"
+          aria-label="Next startup"
+        >
+          →
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
     <!-- MOMENT -->
     <section class="section moment">
       <div class="wrap">
@@ -1176,6 +1575,48 @@
       }, {threshold:.12});
       els.forEach(el => { if (!el.hasAttribute('data-reveal')) io.observe(el); });
     })();
+    /* Student build carousel */
+(function () {
+  const track = document.getElementById('studentTrack');
+  const prev = document.getElementById('studentPrev');
+  const next = document.getElementById('studentNext');
+
+  if (!track || !prev || !next) return;
+
+  const getStep = () => {
+    const card = track.querySelector('.student-card');
+    if (!card) return track.clientWidth;
+
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const updateButtons = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    prev.disabled = track.scrollLeft <= 4;
+    next.disabled = track.scrollLeft >= maxScroll - 4;
+  };
+
+  prev.addEventListener('click', () => {
+    track.scrollBy({
+      left: -getStep(),
+      behavior: 'smooth'
+    });
+  });
+
+  next.addEventListener('click', () => {
+    track.scrollBy({
+      left: getStep(),
+      behavior: 'smooth'
+    });
+  });
+
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+
+  updateButtons();
+})();
   </script>
 
 </body>
