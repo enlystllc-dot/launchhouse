@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0d0f" />
+  <meta name="description" content="Launch a Startup in 2 Hours. Find an idea, build the first version with AI, put it live, and get a 30–60 day plan for your first customers." />
+  <title>Launch a Startup in 2 Hours — Startup Build Sprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f5f0;
+      --paper: #ffffff;
+      --ink: #0c0e10;
+      --muted: #666b70;
+      --line: rgba(12,14,16,.11);
+      --dark: #0b0d0f;
+      --dark-2: #121518;
+      --lime: #c7ff41;
+      --lime-2: #a9e42c;
+      --orange: #ff7b3d;
+      --shadow: 0 24px 70px rgba(12,14,16,.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", system-ui, sans-serif;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .display { font-family: "Space Grotesk", system-ui, sans-serif; letter-spacing: -.055em; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--lime-2); border-radius: 999px; }
+    .section { padding: 112px 0; }
+    .section.dark { background: var(--dark); color: #f6f6f1; }
+    .section.dark-2 { background: var(--dark-2); color: #f6f6f1; }
+    .section-head { max-width: 720px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(42px, 5.5vw, 74px); line-height: .98; margin: 14px 0 20px; }
+    .section-head p { color: var(--muted); font-size: 18px; max-width: 660px; }
+    .dark .section-head p, .dark-2 .section-head p { color: #afb4b8; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 11px;
+      border: 0; cursor: pointer; font: inherit; font-weight: 800;
+      min-height: 54px; padding: 0 22px; border-radius: 14px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--lime); color: #0a0d0c; box-shadow: 0 12px 34px rgba(199,255,65,.24); }
+    .btn-primary:hover { background: #d1ff61; }
+    .btn-dark { background: var(--dark); color: #fff; }
+    .btn-white { background: #fff; color: var(--dark); }
+    .micro { font-size: 12px; color: var(--muted); }
+    .dark .micro { color: #a7adb0; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(246,245,240,.86); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(12,14,16,.06); }
+    .nav-in { height: 70px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-mark { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--dark); color: var(--lime); font-family: "Space Grotesk"; font-size: 13px; }
+    .nav-cta { min-height: 42px; padding: 0 16px; border-radius: 11px; font-size: 14px; }
+
+    /* HERO */
+    .hero { position: relative; padding: 74px 0 86px; overflow: hidden; background: var(--dark); color: #fff; }
+    .hero::before { content: ""; position: absolute; width: 520px; height: 520px; right: -180px; top: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(199,255,65,.18), transparent 62%); filter: blur(6px); }
+    .hero::after { content: ""; position: absolute; left: -220px; bottom: -360px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(255,123,61,.10), transparent 60%); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 54px; }
+    .hero-copy { max-width: 610px; }
+    .hero .eyebrow { color: #bac1c5; }
+    .hero h1 { font-size: clamp(56px, 7.4vw, 94px); line-height: .91; margin: 18px 0 24px; max-width: 720px; }
+    .hero h1 span { color: var(--lime); }
+    .hero-sub { color: #c4c9cc; font-size: clamp(17px, 2vw, 21px); max-width: 570px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .hero-note { margin-top: 14px; color: #9da4a7; }
+    .hero-proof { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-proof span { display: inline-flex; align-items: center; gap: 7px; color: #b8bec2; font-size: 13px; }
+    .hero-proof i { width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; background: rgba(199,255,65,.12); color: var(--lime); font-style: normal; font-size: 12px; }
+
+    /* HERO PRODUCT MOCKUP */
+    .hero-visual { position: relative; min-height: 550px; display: grid; place-items: center; }
+    .dashboard { width: min(610px, 100%); background: #121619; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; box-shadow: 0 35px 90px rgba(0,0,0,.46); overflow: hidden; transform: rotate(1deg); }
+    .dash-top { height: 44px; display: flex; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #596169; }
+    .dash-title { margin-left: 8px; color: #9aa2a8; font-size: 12px; }
+    .dash-body { padding: 18px; }
+    .dash-label { color: #7f878c; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    .build-card { margin-top: 10px; border: 1px solid rgba(255,255,255,.08); background: #0f1214; border-radius: 17px; padding: 18px; }
+    .build-name { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .build-name h3 { margin: 0; font-size: 23px; }
+    .live { display: inline-flex; align-items: center; gap: 6px; background: rgba(199,255,65,.10); color: var(--lime); border: 1px solid rgba(199,255,65,.18); padding: 7px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+    .live b { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; }
+    .dash-url { color: #7f878c; font-size: 12px; margin-top: 7px; }
+    .dash-progress { height: 8px; border-radius: 999px; background: #242a2e; overflow: hidden; margin-top: 17px; }
+    .dash-progress span { display: block; height: 100%; width: 82%; background: var(--lime); border-radius: inherit; }
+    .dash-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; }
+    .dash-step { padding: 11px; background: #171b1e; border-radius: 12px; border: 1px solid rgba(255,255,255,.05); }
+    .dash-step small { display:block; color:#6f787e; font-size:10px; text-transform:uppercase; letter-spacing:.08em; }
+    .dash-step strong { display:block; margin-top:4px; font-size:12px; }
+    .dash-step.done strong { color: var(--lime); }
+    .preview { margin-top: 14px; min-height: 150px; border-radius: 14px; background: linear-gradient(145deg,#eaf0ea,#fefefe); padding: 16px; color: #0f1515; display: grid; grid-template-columns: .75fr 1.25fr; gap: 14px; }
+    .preview-copy h4 { font-family:"Space Grotesk"; font-size: 19px; margin: 9px 0 6px; line-height: 1; letter-spacing:-.04em; }
+    .preview-copy p { font-size: 9px; color:#59605f; margin:0; }
+    .mini-pill { display:inline-flex; font-size:8px; background:#101514; color:#fff; border-radius:999px; padding:5px 7px; }
+    .preview-screen { border: 1px solid #dfe5df; border-radius: 11px; background:#fff; padding:10px; }
+    .mini-line { height: 6px; background:#dfe6df; border-radius:5px; margin-bottom:8px; }
+    .mini-line.w70 { width:70%; } .mini-line.w48 { width:48%; } .mini-line.w86 { width:86%; }
+    .float-card { position: absolute; background:#fff; color:#0d1011; border:1px solid rgba(12,14,16,.08); box-shadow:0 18px 50px rgba(0,0,0,.25); border-radius:15px; padding:14px 16px; }
+    .float-card.small { width: 162px; right: -4px; top: 48px; }
+    .float-card.bottom { width: 184px; left: -10px; bottom: 35px; }
+    .float-kicker { font-size:9px; text-transform:uppercase; letter-spacing:.10em; font-weight:800; color:#7a8185; }
+    .float-title { margin-top:6px; font-family:"Space Grotesk"; font-size:18px; font-weight:700; letter-spacing:-.04em; }
+    .float-row { display:flex; align-items:center; justify-content:space-between; margin-top:8px; font-size:11px; color:#62696c; }
+    .score { color:#1c3511; background:#e7f8ba; padding:4px 7px; border-radius:999px; font-weight:800; }
+
+    /* PROBLEM */
+    .problem { background: #fff; }
+    .problem-grid { display:grid; grid-template-columns: .9fr 1.1fr; gap:70px; align-items:start; }
+    .problem h2 { font-size: clamp(42px,5vw,68px); line-height:.98; margin:14px 0 22px; }
+    .problem-copy p { color:var(--muted); font-size:18px; max-width:470px; }
+    .questions { display:grid; gap:0; border-top:1px solid var(--line); }
+    .question { padding: 18px 0; border-bottom:1px solid var(--line); display:flex; gap:14px; align-items:baseline; }
+    .question strong { font-size: clamp(20px,2.4vw,28px); letter-spacing:-.035em; }
+    .question em { font-style:normal; color:#9a9fa3; font-size:13px; }
+    .problem-end { margin-top:28px; font-size:18px; }
+    .problem-end strong { display:block; margin-top:4px; font-family:"Space Grotesk"; font-size:28px; letter-spacing:-.035em; }
+
+    /* JOURNEY */
+    .journey { background:var(--dark); color:#fff; }
+    .journey-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .journey-card { min-height:245px; border:1px solid rgba(255,255,255,.10); border-radius:20px; padding:23px; background:#111416; position:relative; overflow:hidden; }
+    .journey-card::after { content:""; position:absolute; right:-36px; bottom:-36px; width:120px; height:120px; border-radius:50%; background:rgba(199,255,65,.06); }
+    .step-no { color:#828a8f; font-size:12px; font-weight:800; letter-spacing:.08em; }
+    .journey-card h3 { font-size:27px; margin:36px 0 8px; font-family:"Space Grotesk"; letter-spacing:-.04em; }
+    .journey-card p { color:#9fa7aa; font-size:14px; max-width:215px; }
+    .mini-ui { position:absolute; left:23px; right:23px; bottom:20px; height:36px; border:1px solid rgba(255,255,255,.08); background:#0d1012; border-radius:9px; display:flex; align-items:center; padding:0 10px; gap:6px; }
+    .mini-ui .bar { height:7px; border-radius:8px; background:#2a3135; flex:1; }
+    .mini-ui .bar.active { flex:1.7; background:var(--lime); }
+
+    /* IDEA DATABASE */
+    .idea { background:#eceae3; }
+    .idea-layout { display:grid; grid-template-columns: .72fr 1.28fr; gap:42px; align-items:center; }
+    .idea-copy h2 { font-size: clamp(42px,5vw,68px); line-height:.97; margin:13px 0 16px; }
+    .idea-copy p { color:var(--muted); font-size:17px; }
+    .idea-list { margin-top:24px; display:grid; gap:8px; }
+    .bullet { display:flex; gap:10px; align-items:flex-start; font-size:14px; color:#353a3d; }
+    .check { flex:none; width:20px; height:20px; display:grid; place-items:center; border-radius:50%; background:#d9f78b; font-weight:900; font-size:12px; }
+    .database { background:#fff; border:1px solid rgba(12,14,16,.10); border-radius:24px; overflow:hidden; box-shadow:var(--shadow); }
+    .db-top { padding:16px; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:center; justify-content:space-between; }
+    .search { flex:1; height:38px; border:1px solid var(--line); border-radius:10px; display:flex; align-items:center; padding:0 11px; color:#7e8487; font-size:12px; }
+    .filter { height:38px; border:1px solid var(--line); border-radius:10px; padding:0 11px; display:flex; align-items:center; font-size:12px; color:#51575a; }
+    .db-head { display:grid; grid-template-columns:1.55fr .7fr .7fr .6fr; gap:12px; padding:10px 16px; background:#fafafa; color:#8b9092; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+    .db-row { display:grid; grid-template-columns:1.55fr .7fr .7fr .6fr; gap:12px; padding:15px 16px; border-top:1px solid var(--line); align-items:center; }
+    .db-name strong { display:block; font-size:13px; }
+    .db-name span { display:block; color:#8b9092; font-size:10px; margin-top:2px; }
+    .db-tag { display:inline-flex; padding:5px 7px; border-radius:999px; background:#f0f2ef; color:#5f6669; font-size:9px; font-weight:700; }
+    .db-fit { font-size:10px; color:#657067; }
+
+    /* BUILD */
+    .build { background:#0f1214; color:#fff; }
+    .build-grid { display:grid; grid-template-columns: .75fr 1.25fr; gap:48px; align-items:center; }
+    .build-copy h2 { font-size: clamp(42px,5.5vw,72px); line-height:.97; margin:14px 0 18px; }
+    .build-copy p { color:#aab1b4; font-size:18px; }
+    .no-need { display:grid; gap:10px; margin:24px 0; }
+    .no-need span { font-size:14px; color:#d7dbdd; }
+    .no-need span::before { content:"×"; color:#717a7e; margin-right:9px; font-weight:700; }
+    .build-demo { border:1px solid rgba(255,255,255,.10); border-radius:22px; background:#14181a; box-shadow:0 30px 80px rgba(0,0,0,.34); overflow:hidden; }
+    .demo-head { height:44px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; align-items:center; padding:0 14px; gap:7px; }
+    .demo-content { padding:18px; }
+    .prompt { border-radius:13px; padding:15px; background:#0c0f11; border:1px solid rgba(255,255,255,.07); }
+    .prompt-label { color:#7f878c; font-size:9px; text-transform:uppercase; letter-spacing:.10em; }
+    .prompt-text { margin-top:7px; font-size:13px; line-height:1.45; color:#dfe3e4; }
+    .gen-row { display:flex; justify-content:center; align-items:center; gap:10px; color:#b8c1c4; font-size:11px; padding:13px 0; }
+    .spinner { width:14px; height:14px; border-radius:50%; border:2px solid #3a4246; border-top-color:var(--lime); animation:spin 1s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .site-preview { background:#f8fbf7; color:#101514; border-radius:14px; overflow:hidden; min-height:300px; }
+    .site-nav { height:38px; border-bottom:1px solid #e1e5e1; display:flex; align-items:center; justify-content:space-between; padding:0 12px; font-size:10px; }
+    .site-logo { font-weight:900; }
+    .site-cta { background:#111614; color:#fff; padding:6px 8px; border-radius:7px; font-size:9px; }
+    .site-main { display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:34px 28px; align-items:center; }
+    .site-main h3 { font-family:"Space Grotesk"; font-size:32px; line-height:.95; margin:0 0 10px; letter-spacing:-.05em; }
+    .site-main p { color:#69716e; font-size:10px; margin:0 0 13px; }
+    .site-main button { border:0; background:#111614; color:#fff; padding:8px 10px; border-radius:7px; font-size:9px; }
+    .site-widget { height:170px; border-radius:15px; background:linear-gradient(145deg,#dff2c7,#fff); border:1px solid #d2e2ce; display:grid; place-items:center; position:relative; overflow:hidden; }
+    .widget-ring { width:102px; height:102px; border-radius:50%; border:16px solid #b4dc70; position:relative; }
+    .widget-ring::after { content:""; position:absolute; inset:-16px; border-radius:50%; border:16px solid transparent; border-top-color:#101513; transform:rotate(24deg); }
+    .site-live { padding:10px 14px; display:flex; justify-content:space-between; align-items:center; background:#e9f2e7; border-top:1px solid #dbe4da; font-size:9px; }
+    .site-live strong { color:#215116; }
+
+    /* MOMENT */
+    .moment { background:#f3f1ea; text-align:center; }
+    .moment h2 { font-size:clamp(48px,7.2vw,92px); line-height:.92; max-width:900px; margin:14px auto 20px; }
+    .moment h2 span { color:#647d4c; }
+    .moment p { max-width:700px; margin:0 auto; color:var(--muted); font-size:19px; }
+    .live-screen { margin:48px auto 0; max-width:860px; background:#0d1012; color:#fff; border-radius:24px; padding:16px; box-shadow:0 30px 90px rgba(12,14,16,.18); text-align:left; }
+    .live-screen-inner { border:1px solid rgba(255,255,255,.08); border-radius:17px; padding:28px; background:linear-gradient(145deg,#14191a,#0d1012); }
+    .live-banner { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:28px; }
+    .live-banner h3 { margin:0; font-family:"Space Grotesk"; font-size:28px; letter-spacing:-.04em; }
+    .live-badge { background:rgba(199,255,65,.11); color:var(--lime); padding:7px 9px; border-radius:999px; font-size:10px; font-weight:800; }
+    .site-large { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .site-large .tile { min-height:170px; border-radius:15px; background:#f7faf7; color:#111614; padding:24px; }
+    .tile.primary { background:linear-gradient(145deg,#dff2c7,#f5f9f4); }
+    .tile h4 { font-family:"Space Grotesk"; font-size:23px; margin:0 0 8px; letter-spacing:-.04em; }
+    .tile p { font-size:11px; color:#5e6762; }
+
+    /* CUSTOMER */
+    .customer { background:#fff; }
+    .customer-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center; }
+    .customer h2 { font-size:clamp(43px,5.4vw,70px); line-height:.97; margin:14px 0 18px; }
+    .customer p { color:var(--muted); font-size:18px; }
+    .funnel { background:#f5f4ee; border:1px solid var(--line); border-radius:24px; padding:24px; }
+    .funnel-step { display:grid; grid-template-columns:42px 1fr auto; gap:12px; align-items:center; padding:15px 0; border-bottom:1px solid var(--line); }
+    .funnel-step:last-child { border-bottom:0; }
+    .funnel-num { width:38px; height:38px; display:grid; place-items:center; background:#101416; color:var(--lime); border-radius:12px; font-weight:900; font-size:12px; }
+    .funnel-step strong { font-size:14px; }
+    .funnel-step span { color:#777e81; font-size:11px; }
+    .arrow { color:#9da3a6; }
+    .framework { margin-top:16px; padding:18px; background:#0f1214; color:#fff; border-radius:18px; }
+    .framework h4 { margin:0; font-family:"Space Grotesk"; font-size:22px; letter-spacing:-.03em; }
+    .framework p { color:#9fa7aa; font-size:12px; margin:7px 0 0; }
+    .framework-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+    .framework-tags span { border:1px solid rgba(255,255,255,.08); background:#161b1e; border-radius:999px; padding:6px 8px; font-size:9px; color:#c4cacd; }
+
+    /* ROADMAP */
+    .roadmap { background:#e8e6de; }
+    .roadmap-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:36px; }
+    .week { background:#fff; border:1px solid rgba(12,14,16,.08); border-radius:18px; padding:20px; min-height:185px; box-shadow:0 8px 28px rgba(12,14,16,.05); }
+    .week span { font-size:10px; text-transform:uppercase; letter-spacing:.09em; color:#8a9092; font-weight:800; }
+    .week h3 { font-family:"Space Grotesk"; font-size:23px; line-height:1; margin:22px 0 8px; letter-spacing:-.04em; }
+    .week p { color:#696f72; font-size:12px; }
+    .roadmap-note { margin-top:15px; color:#6f7578; font-size:12px; }
+
+    /* VALUE */
+    .value { background:#fff; }
+    .value-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:start; }
+    .value-list { display:grid; gap:12px; }
+    .feature { display:grid; grid-template-columns:42px 1fr; gap:13px; padding:17px 0; border-bottom:1px solid var(--line); }
+    .feature-icon { width:40px; height:40px; border-radius:12px; background:#eef4e5; display:grid; place-items:center; font-weight:900; }
+    .feature h3 { margin:0; font-family:"Space Grotesk"; font-size:17px; letter-spacing:-.02em; }
+    .feature p { margin:4px 0 0; font-size:13px; color:#6a7174; }
+    .offer-card { background:var(--dark); color:#fff; border-radius:28px; padding:30px; box-shadow:var(--shadow); position:sticky; top:95px; }
+    .offer-card .eyebrow { color:#9fa7aa; }
+    .offer-card h3 { font-family:"Space Grotesk"; font-size:34px; line-height:.98; margin:13px 0; letter-spacing:-.04em; }
+    .price { font-family:"Space Grotesk"; font-size:65px; line-height:1; letter-spacing:-.06em; margin:8px 0 6px; }
+    .offer-list { display:grid; gap:9px; margin:18px 0 22px; }
+    .offer-item { display:flex; gap:8px; align-items:flex-start; color:#d3d8da; font-size:13px; }
+    .offer-item::before { content:"✓"; color:var(--lime); font-weight:900; }
+    .offer-card .btn { width:100%; }
+    .offer-note { text-align:center; margin-top:10px; color:#90999d; font-size:11px; }
+
+    /* WHO */
+    .who { background:#fff; }
+    .who-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:66px; align-items:start; }
+    .who h2 { font-size:clamp(42px,5vw,68px); line-height:.97; margin:14px 0; }
+    .who-copy p { color:var(--muted); font-size:17px; }
+    .fit-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .fit { border:1px solid var(--line); border-radius:16px; padding:15px; font-size:14px; background:#fafaf7; }
+    .fit strong { display:block; font-family:"Space Grotesk"; font-size:15px; margin-bottom:4px; }
+    .fit span { color:#737a7d; font-size:12px; }
+    .not-for { margin-top:20px; padding:17px; border-radius:16px; background:#f0eeea; font-size:13px; color:#5f6467; }
+    .not-for strong { color:#111; }
+
+    /* ECOSYSTEM */
+    .ecosystem { background:#0c0f11; color:#fff; text-align:center; }
+    .ecosystem .section-head { margin-left:auto; margin-right:auto; }
+    .ecosystem h2 { max-width:820px; margin-left:auto; margin-right:auto; }
+    .ecosystem-steps { max-width:920px; margin:50px auto 0; display:grid; grid-template-columns:repeat(5,1fr); gap:7px; }
+    .eco-step { border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:20px 12px; background:#121619; }
+    .eco-step strong { display:block; font-family:"Space Grotesk"; font-size:16px; }
+    .eco-step span { display:block; color:#879095; font-size:10px; margin-top:5px; }
+    .ecosystem-quote { max-width:760px; margin:44px auto 0; font-family:"Space Grotesk"; font-size:clamp(28px,4vw,46px); line-height:1.02; letter-spacing:-.04em; }
+    .ecosystem-quote span { color:var(--lime); }
+
+    /* BEFORE AFTER */
+    .before-after { background:#f2f0e9; }
+    .ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .ba-card { border-radius:24px; padding:28px; min-height:390px; }
+    .ba-card.before { background:#e4e2db; }
+    .ba-card.after { background:#0f1214; color:#fff; }
+    .ba-card h3 { margin:0 0 24px; font-family:"Space Grotesk"; font-size:28px; letter-spacing:-.03em; }
+    .ba-lines { display:grid; gap:12px; }
+    .ba-line { padding:14px 16px; border-radius:13px; background:rgba(255,255,255,.55); font-size:14px; }
+    .after .ba-line { background:#171b1e; color:#d4d9db; border:1px solid rgba(255,255,255,.07); }
+    .after .ba-line::before { content:"✓  "; color:var(--lime); }
+    .ba-foot { margin-top:26px; font-family:"Space Grotesk"; font-size:19px; }
+
+    /* FAQ */
+    .faq { background:#fff; }
+    .faq-wrap { max-width:900px; }
+    details { border-top:1px solid var(--line); }
+    details:last-child { border-bottom:1px solid var(--line); }
+    summary { list-style:none; cursor:pointer; padding:21px 0; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:"Space Grotesk"; font-size:18px; font-weight:600; letter-spacing:-.02em; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; color:#8f9699; font-size:23px; transition:transform .18s ease; }
+    details[open] summary::after { transform:rotate(45deg); }
+    .faq-a { color:#6c7275; padding:0 0 21px; max-width:740px; font-size:15px; }
+
+    /* FINAL */
+    .final { padding:120px 0 110px; background:var(--dark); color:#fff; text-align:center; }
+    .final h2 { font-size:clamp(52px,7vw,88px); line-height:.92; max-width:900px; margin:15px auto 19px; }
+    .final h2 span { color:var(--lime); }
+    .final p { max-width:630px; margin:0 auto 28px; color:#b6bdc0; font-size:18px; }
+    .final-stack { display:grid; gap:7px; justify-content:center; margin-bottom:27px; color:#939b9f; font-size:14px; }
+    .final-stack strong { color:#fff; }
+
+    /* MOBILE CTA */
+    .mobile-cta { display:none; position:fixed; z-index:30; left:12px; right:12px; bottom:12px; padding:9px; background:rgba(15,18,20,.92); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:0 15px 50px rgba(0,0,0,.3); }
+    .mobile-cta .btn { width:100%; min-height:48px; }
+    @media (max-width: 980px) {
+      .hero-grid, .problem-grid, .idea-layout, .build-grid, .customer-grid, .value-grid, .who-grid { grid-template-columns:1fr; }
+      .hero-visual { min-height:490px; }
+      .hero-copy { max-width:760px; }
+      .hero-grid { gap:36px; }
+      .journey-grid { grid-template-columns:repeat(2,1fr); }
+      .roadmap-grid { grid-template-columns:repeat(2,1fr); }
+      .offer-card { position:static; }
+      .who-grid { gap:34px; }
+      .ecosystem-steps { grid-template-columns:repeat(3,1fr); }
+    }
+    @media (max-width: 700px) {
+      .wrap { width:min(var(--max), calc(100% - 28px)); }
+      .section { padding:78px 0; }
+      .nav-in { height:62px; }
+      .nav-cta { min-height:40px; font-size:13px; }
+      .hero { padding:54px 0 65px; }
+      .hero h1 { font-size:clamp(48px,14vw,72px); }
+      .hero-sub { font-size:16px; }
+      .hero-actions .btn { width:100%; }
+      .hero-actions { display:block; }
+      .hero-note { text-align:center; }
+      .hero-proof { gap:10px 14px; }
+      .hero-proof span { font-size:11px; }
+      .hero-visual { min-height:350px; margin-top:12px; }
+      .dashboard { width:100%; transform:none; }
+      .float-card.small { right:-4px; top:28px; transform:scale(.82); transform-origin:right top; }
+      .float-card.bottom { left:-6px; bottom:10px; transform:scale(.82); transform-origin:left bottom; }
+      .preview { min-height:120px; }
+      .dash-steps { grid-template-columns:repeat(2,1fr); }
+      .question strong { font-size:21px; }
+      .journey-grid, .roadmap-grid, .ba-grid, .fit-list { grid-template-columns:1fr; }
+      .journey-card { min-height:200px; }
+      .journey-card h3 { margin-top:30px; }
+      .idea-layout, .build-grid, .customer-grid, .value-grid, .who-grid { gap:30px; }
+      .db-head, .db-row { grid-template-columns:1.45fr .7fr .6fr; }
+      .db-head > :last-child, .db-row > :last-child { display:none; }
+      .db-top { align-items:stretch; flex-direction:column; }
+      .build-copy p, .customer p, .section-head p { font-size:16px; }
+      .site-main { grid-template-columns:1fr; }
+      .site-widget { height:120px; }
+      .site-large { grid-template-columns:1fr; }
+      .live-banner { align-items:flex-start; flex-direction:column; }
+      .live-banner h3 { font-size:23px; }
+      .ecosystem-steps { grid-template-columns:1fr 1fr; }
+      .eco-step:last-child { grid-column:1 / -1; }
+      .final { padding-bottom:130px; }
+      .mobile-cta { display:block; }
+      .nav .nav-cta { display:none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top" aria-label="Startup Build Sprint home">
+        <span class="brand-mark">SB</span><span>Startup Build Sprint</span>
+      </a>
+      <a class="btn btn-primary nav-cta" href="#offer">Launch My Startup →</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">A 2-hour founder sprint</div>
+          <h1 class="display">Launch a Startup <span>in 2 Hours.</span></h1>
+          <p class="hero-sub">Find an idea, build the first version with AI, put it live, and know what to do next.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#offer">Launch My Startup — ₹197 <span>→</span></a>
+          </div>
+          <div class="hero-note micro">Instant access · No coding experience needed</div>
+          <div class="hero-proof">
+            <span><i>✓</i>No fixed class time</span>
+            <span><i>✓</i>No webinar</span>
+            <span><i>✓</i>Start today</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Visual preview of a startup being built and launched">
+          <div class="float-card small">
+            <div class="float-kicker">Your startup match</div>
+            <div class="float-title">92% match</div>
+            <div class="float-row"><span>AI sales tool</span><span class="score">Strong fit</span></div>
+          </div>
+          <div class="dashboard">
+            <div class="dash-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dash-title">startup-build.app</span></div>
+            <div class="dash-body">
+              <div class="dash-label">Your 2-hour build</div>
+              <div class="build-card">
+                <div class="build-name">
+                  <div><h3>FinFlow</h3><div class="dash-url">finflow.app</div></div>
+                  <div class="live"><b></b> LIVE</div>
+                </div>
+                <div class="dash-progress"><span></span></div>
+                <div class="dash-steps">
+                  <div class="dash-step done"><small>01</small><strong>Idea ✓</strong></div>
+                  <div class="dash-step done"><small>02</small><strong>Build ✓</strong></div>
+                  <div class="dash-step done"><small>03</small><strong>Page ✓</strong></div>
+                  <div class="dash-step"><small>04</small><strong>Customers</strong></div>
+                </div>
+                <div class="preview">
+                  <div class="preview-copy">
+                    <span class="mini-pill">SMART MONEY</span>
+                    <h4>Know where your money goes.</h4>
+                    <p>A simple tool built for young Indian earners.</p>
+                  </div>
+                  <div class="preview-screen">
+                    <div class="mini-line w70"></div><div class="mini-line w48"></div><div class="mini-line w86"></div>
+                    <div style="height:18px"></div><div class="mini-line"></div><div class="mini-line w70"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card bottom">
+            <div class="float-kicker">Next 30–60 days</div>
+            <div class="float-title">Get first users.</div>
+            <div class="float-row"><span>Build → Test → Sell</span><span>→</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section problem">
+      <div class="wrap problem-grid">
+        <div class="problem-copy">
+          <div class="eyebrow">The problem</div>
+          <h2 class="display">You want to start a business.</h2>
+          <p>But the questions keep getting in the way.</p>
+          <div class="problem-end">So you keep thinking. You keep saving ideas. You keep watching videos.</div>
+          <div class="problem-end"><strong>And months later, you still haven't built anything.</strong></div>
+        </div>
+        <div class="questions">
+          <div class="question"><strong>What should I build?</strong><em>01</em></div>
+          <div class="question"><strong>What if I choose the wrong idea?</strong><em>02</em></div>
+          <div class="question"><strong>Do I need a developer?</strong><em>03</em></div>
+          <div class="question"><strong>How do I build the product?</strong><em>04</em></div>
+          <div class="question"><strong>How do I get people to use it?</strong><em>05</em></div>
+          <div class="question"><strong>How do I get my first customer?</strong><em>06</em></div>
+        </div>
+      </div>
+      <div class="wrap" style="margin-top:34px">
+        <div style="max-width:760px">
+          <div class="eyebrow">The answer</div>
+          <div style="font-family:'Space Grotesk';font-size:clamp(30px,4vw,48px);letter-spacing:-.045em;line-height:1.02;margin-top:12px">You don't need another video telling you to “start”.<br><strong>You need to actually start.</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section journey">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The 2-hour journey</div>
+          <h2 class="display">Your startup.<br>Step by step.</h2>
+          <p>From no idea to a live first version — without spending months “learning how to start”.</p>
+        </div>
+        <div class="journey-grid">
+          <article class="journey-card"><span class="step-no">01</span><h3>Find</h3><p>Get startup ideas that fit you instead of staring at a blank page.</p><div class="mini-ui"><span class="bar active"></span><span class="bar"></span></div></article>
+          <article class="journey-card"><span class="step-no">02</span><h3>Choose</h3><p>Compare ideas and pick one you can actually test.</p><div class="mini-ui"><span class="bar"></span><span class="bar active"></span></div></article>
+          <article class="journey-card"><span class="step-no">03</span><h3>Build</h3><p>Use AI to turn your idea into a real first version.</p><div class="mini-ui"><span class="bar active"></span><span class="bar"></span></div></article>
+          <article class="journey-card"><span class="step-no">04</span><h3>Launch</h3><p>Put it online. Then follow the next steps to find customers.</p><div class="mini-ui"><span class="bar active"></span><span class="bar active"></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDEA DATABASE -->
+    <section class="section idea">
+      <div class="wrap idea-layout">
+        <div class="idea-copy">
+          <div class="eyebrow">01 · Find your idea</div>
+          <h2 class="display">Don't start with a blank page.</h2>
+          <p>Get access to a growing database of <strong>1,000+ startup ideas and business opportunities</strong>.</p>
+          <div class="idea-list">
+            <div class="bullet"><span class="check">✓</span><span>Explore ideas across markets and business models.</span></div>
+            <div class="bullet"><span class="check">✓</span><span>See what is already being built.</span></div>
+            <div class="bullet"><span class="check">✓</span><span>Compare ideas before you commit.</span></div>
+            <div class="bullet"><span class="check">✓</span><span>Use the Founder Assessment to narrow your list.</span></div>
+          </div>
+        </div>
+        <div class="database" aria-label="Mockup of startup idea database">
+          <div class="db-top"><div class="search">⌕ &nbsp; Search startup ideas...</div><div class="filter">Industry ▾</div></div>
+          <div class="db-head"><div>Opportunity</div><div>Model</div><div>Capital</div><div>Fit</div></div>
+          <div class="db-row"><div class="db-name"><strong>AI Resume Screener</strong><span>Recruitment · B2B</span></div><div><span class="db-tag">SaaS</span></div><div><span class="db-tag">Low</span></div><div class="db-fit">★★★★★</div></div>
+          <div class="db-row"><div class="db-name"><strong>Home Repair Assistant</strong><span>Local services · India</span></div><div><span class="db-tag">Marketplace</span></div><div><span class="db-tag">Low</span></div><div class="db-fit">★★★★☆</div></div>
+          <div class="db-row"><div class="db-name"><strong>Personal Money Coach</strong><span>Finance · Consumer</span></div><div><span class="db-tag">AI tool</span></div><div><span class="db-tag">Low</span></div><div class="db-fit">★★★★☆</div></div>
+          <div class="db-row"><div class="db-name"><strong>SMB Lead Finder</strong><span>Sales · B2B</span></div><div><span class="db-tag">SaaS</span></div><div><span class="db-tag">Low</span></div><div class="db-fit">★★★★★</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILD -->
+    <section class="section build">
+      <div class="wrap build-grid">
+        <div class="build-copy">
+          <div class="eyebrow">02–03 · Choose + build</div>
+          <h2 class="display">Now comes the fun part.</h2>
+          <p>Pick one idea. Then use AI to turn it into a real first version.</p>
+          <div class="no-need">
+            <span>You don't need to know how to code.</span>
+            <span>You don't need to hire a developer.</span>
+            <span>You don't need a technical co-founder.</span>
+          </div>
+          <p style="font-size:14px;color:#d4d9db">You build it. Not just watch someone else build it.</p>
+        </div>
+        <div class="build-demo" aria-label="Mockup of AI turning a prompt into a live startup">
+          <div class="demo-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px;color:#7f878c;font-size:11px">AI Builder</span></div>
+          <div class="demo-content">
+            <div class="prompt"><div class="prompt-label">Your prompt</div><div class="prompt-text">Build a simple landing page for a tool that helps Indian recruiters screen resumes faster.</div></div>
+            <div class="gen-row"><span class="spinner"></span><span>Building your first version…</span></div>
+            <div class="site-preview">
+              <div class="site-nav"><span class="site-logo">TalentFlow</span><span class="site-cta">Try free</span></div>
+              <div class="site-main">
+                <div><h3>Screen resumes faster.</h3><p>Find the right candidates with less manual work.</p><button>Get started →</button></div>
+                <div class="site-widget"><div class="widget-ring"></div></div>
+              </div>
+              <div class="site-live"><span>Your first version is ready.</span><strong>● LIVE</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOMENT -->
+    <section class="section moment">
+      <div class="wrap">
+        <div class="eyebrow">The 2-hour moment</div>
+        <h2 class="display">2 hours ago, you had an idea.<br><span>Now you have something real.</span></h2>
+        <p>The goal is not to build the final company in 2 hours. The goal is to stop being someone who wants to build something — and become someone who has built something.</p>
+        <div class="live-screen">
+          <div class="live-screen-inner">
+            <div class="live-banner"><h3>Your startup is live.</h3><span class="live-badge">● LIVE</span></div>
+            <div class="site-large">
+              <div class="tile primary"><h4>FinFlow</h4><p>A simple money tool built for young Indian earners.</p></div>
+              <div class="tile"><h4>Version 01</h4><p>Simple. Live. Ready to test with real people.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section class="section customer">
+      <div class="wrap customer-grid">
+        <div>
+          <div class="eyebrow">04 · Get customers</div>
+          <h2 class="display">Building it is only step one.</h2>
+          <p>A product without customers is just a product. So we also give you the basics for getting attention, leads and your first paying customers.</p>
+          <div style="margin-top:28px;font-family:'Space Grotesk';font-size:26px;letter-spacing:-.03em">Get attention → Get leads → Get paid</div>
+        </div>
+        <div>
+          <div class="funnel">
+            <div class="funnel-step"><div class="funnel-num">01</div><div><strong>Find your first audience</strong><span>Who should see this?</span></div><div class="arrow">→</div></div>
+            <div class="funnel-step"><div class="funnel-num">02</div><div><strong>Get people to your page</strong><span>Turn attention into visits.</span></div><div class="arrow">→</div></div>
+            <div class="funnel-step"><div class="funnel-num">03</div><div><strong>Turn visitors into leads</strong><span>Make the next step clear.</span></div><div class="arrow">→</div></div>
+            <div class="funnel-step"><div class="funnel-num">04</div><div><strong>Turn leads into buyers</strong><span>Follow up and sell.</span></div><div class="arrow">→</div></div>
+          </div>
+          <div class="framework">
+            <h4>Landing Page Conversion Framework</h4>
+            <p>A simple, psychology-backed way to structure your page.</p>
+            <div class="framework-tags"><span>What is it?</span><span>Who is it for?</span><span>Why care?</span><span>Why trust?</span><span>What next?</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section roadmap">
+      <div class="wrap">
+        <div class="section-head" style="margin-bottom:0">
+          <div class="eyebrow">The next 30–60 days</div>
+          <h2 class="display">You won't have to guess what to do next.</h2>
+          <p>Once your startup is live, follow a simple plan to get your first users, learn from them, improve the product, and start selling.</p>
+        </div>
+        <div class="roadmap-grid">
+          <div class="week"><span>Week 1</span><h3>Launch + learn</h3><p>Put the first version in front of real people and collect feedback.</p></div>
+          <div class="week"><span>Week 2</span><h3>Get users</h3><p>Start reaching your first audience and track what gets attention.</p></div>
+          <div class="week"><span>Weeks 3–4</span><h3>Improve</h3><p>Fix what matters. Make the product and page clearer.</p></div>
+          <div class="week"><span>Days 30–60</span><h3>Sell</h3><p>Keep what works, test new channels, and work toward paying customers.</p></div>
+        </div>
+        <div class="roadmap-note">The exact path depends on the startup you choose. The goal is simple: get your first real users, then your first paying customers.</div>
+      </div>
+    </section>
+
+    <!-- VALUE -->
+    <section class="section value" id="offer">
+      <div class="wrap value-grid">
+        <div>
+          <div class="eyebrow">What you get</div>
+          <h2 class="display" style="font-size:clamp(44px,5.5vw,74px);line-height:.98;margin:14px 0 18px">Everything you need to go from idea to first launch.</h2>
+          <div class="value-list">
+            <div class="feature"><div class="feature-icon">01</div><div><h3>Founder Assessment</h3><p>Find startup ideas that fit you.</p></div></div>
+            <div class="feature"><div class="feature-icon">1K+</div><div><h3>Startup Idea Database</h3><p>Explore researched business opportunities.</p></div></div>
+            <div class="feature"><div class="feature-icon">✓</div><div><h3>Idea Scorecard</h3><p>Compare ideas before you commit.</p></div></div>
+            <div class="feature"><div class="feature-icon">AI</div><div><h3>2-Hour Build System</h3><p>Follow the steps to build your first version with AI.</p></div></div>
+            <div class="feature"><div class="feature-icon">↗</div><div><h3>Landing Page Conversion Framework</h3><p>Turn visitors into leads and buyers.</p></div></div>
+            <div class="feature"><div class="feature-icon">30</div><div><h3>First-Customer Roadmap</h3><p>Know what to do for the next 30–60 days.</p></div></div>
+            <div class="feature"><div class="feature-icon">◎</div><div><h3>Founder Build Community</h3><p>See what other people are building and keep moving.</p></div></div>
+          </div>
+        </div>
+        <aside class="offer-card">
+          <div class="eyebrow">STARTUP BUILD SPRINT</div>
+          <h3>Launch your first startup.</h3>
+          <div class="price">₹197</div>
+          <div class="micro">One-time payment · Instant access</div>
+          <div class="offer-list">
+            <div class="offer-item">Founder Assessment</div>
+            <div class="offer-item">1,000+ startup ideas</div>
+            <div class="offer-item">Personalized idea selection</div>
+            <div class="offer-item">AI Build System</div>
+            <div class="offer-item">Landing Page Conversion Framework</div>
+            <div class="offer-item">30–60 Day Customer Roadmap</div>
+          </div>
+          <a class="btn btn-primary" href="#checkout-placeholder">Launch My Startup →</a>
+          <div class="offer-note">Secure payment · Start whenever you want</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- NOT NEED -->
+    <section class="section who">
+      <div class="wrap who-grid">
+        <div class="who-copy">
+          <div class="eyebrow">You don't need</div>
+          <h2 class="display">You need 2 focused hours.</h2>
+          <p>A laptop. A willingness to build. And a way to start without waiting for the “perfect” moment.</p>
+        </div>
+        <div>
+          <div class="fit-list">
+            <div class="fit"><strong>✓ No coding skills</strong><span>AI helps you build the first version.</span></div>
+            <div class="fit"><strong>✓ No big team</strong><span>Start small. Learn as you go.</span></div>
+            <div class="fit"><strong>✓ No perfect idea</strong><span>We help you narrow your choices.</span></div>
+            <div class="fit"><strong>✓ No business degree</strong><span>You don't need years of theory to start.</span></div>
+            <div class="fit"><strong>✓ No huge budget</strong><span>Start with a simple version.</span></div>
+            <div class="fit"><strong>✓ No years of experience</strong><span>You can start from zero.</span></div>
+          </div>
+          <div class="not-for"><strong>This is not for people looking for another course to watch.</strong> It's for people who want to build.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER -->
+    <section class="section before-after">
+      <div class="wrap">
+        <div class="section-head" style="margin-bottom:36px">
+          <div class="eyebrow">The transformation</div>
+          <h2 class="display">From thinking about it to doing it.</h2>
+        </div>
+        <div class="ba-grid">
+          <div class="ba-card before"><h3>Before</h3><div class="ba-lines"><div class="ba-line">“I want to start a startup.”</div><div class="ba-line">“I don't know what to build.”</div><div class="ba-line">“I don't know how to code.”</div><div class="ba-line">“I don't know where to start.”</div><div class="ba-line">“I have no customers.”</div></div></div>
+          <div class="ba-card after"><h3>After</h3><div class="ba-lines"><div class="ba-line">I picked my idea.</div><div class="ba-line">I built the first version.</div><div class="ba-line">My startup is live.</div><div class="ba-line">I know how to get leads.</div><div class="ba-line">I have a 30–60 day plan.</div></div><div class="ba-foot">That's the transformation.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ECOSYSTEM -->
+    <section class="section ecosystem">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The bigger idea</div>
+          <h2 class="display">Every big company starts small.</h2>
+          <p>You don't start with a huge team, millions of users or a perfect product. You start with version one.</p>
+        </div>
+        <div class="ecosystem-steps">
+          <div class="eco-step"><strong>Idea</strong><span>Find an opportunity</span></div>
+          <div class="eco-step"><strong>Version 1</strong><span>Build something real</span></div>
+          <div class="eco-step"><strong>Users</strong><span>Put it in front of people</span></div>
+          <div class="eco-step"><strong>Customers</strong><span>Get someone to pay</span></div>
+          <div class="eco-step"><strong>Growth</strong><span>Keep building</span></div>
+        </div>
+        <div class="ecosystem-quote">“One day, some of these small ideas may become very big businesses.”<br><span>Every one starts with version one.</span></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="wrap faq-wrap">
+        <div class="section-head" style="margin-bottom:34px">
+          <div class="eyebrow">Questions</div>
+          <h2 class="display">Before you start.</h2>
+        </div>
+        <details><summary>Do I need to know coding?</summary><div class="faq-a">No. The build process is designed for beginners and uses AI to help you create the first version.</div></details>
+        <details><summary>Do I need a startup idea before I join?</summary><div class="faq-a">No. That's one of the first things we help you solve.</div></details>
+        <details><summary>What if I already have an idea?</summary><div class="faq-a">You can use your own idea. You can also compare it with ideas from the database.</div></details>
+        <details><summary>Will I build a complete startup in 2 hours?</summary><div class="faq-a">You'll build and launch the first working version. A real startup takes time to improve, test and grow. The goal is to get you from zero to version one.</div></details>
+        <details><summary>What can I build?</summary><div class="faq-a">That depends on the idea you choose. You may build a website, tool, app, SaaS product, AI product or another simple online business.</div></details>
+        <details><summary>Will I get customers in 2 hours?</summary><div class="faq-a">No one can honestly promise that. You will get a working first version and a roadmap for the next 30–60 days to start getting users and customers.</div></details>
+        <details><summary>Is this live?</summary><div class="faq-a">No. You can start whenever you want. There is no fixed class time and no webinar.</div></details>
+        <details><summary>Is this just a course?</summary><div class="faq-a">No. The goal is not to sit and watch. You will make decisions and build something during the sprint.</div></details>
+        <details><summary>How long do I get access?</summary><div class="faq-a"><strong>Replace this sentence with the actual access period before launch.</strong></div></details>
+        <details><summary>What happens after the 2-hour sprint?</summary><div class="faq-a">You get the next-step roadmap for getting users and customers. You can then continue building, testing and improving your startup.</div></details>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final" id="checkout-placeholder">
+      <div class="wrap">
+        <div class="eyebrow" style="color:#9fa7aa">Your first launch</div>
+        <h2 class="display">Stop planning your startup.<br><span>Start it.</span></h2>
+        <p>You don't need another 20 hours of videos. You need one idea, one laptop, two hours, and a first version.</p>
+        <div class="final-stack"><span>One idea.</span><span>One first version.</span><span><strong>One launch.</strong></span></div>
+        <a class="btn btn-primary" href="#offer">Start My 2-Hour Sprint — ₹197 <span>→</span></a>
+        <div class="micro" style="margin-top:12px;color:#8f989c">Find it. Build it. Launch it.</div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-cta">
+    <a class="btn btn-primary" href="#offer">₹197 · Launch My Startup →</a>
+  </div>
+
+  <script>
+    // Lightweight scroll-reveal. Respects prefers-reduced-motion.
+    (function(){
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) return;
+      const selectors = ['.journey-card','.db-row','.feature','.week','.ba-card','.eco-step','.funnel-step'];
+      const els = document.querySelectorAll(selectors.join(','));
+      els.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity .55s ease, transform .55s ease';
+        el.style.transitionDelay = ((i % 4) * 55) + 'ms';
+      });
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        });
+      }, {threshold:.12});
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>
