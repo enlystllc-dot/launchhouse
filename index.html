@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0d0f" />
   <meta name="description" content="Launch a Startup in 2 Hours. Find an idea, build the first version with AI, put it live, and get a 30–60 day plan for your first customers." />
-  <title>Launch a Startup in 2 Hours — Startup Build Sprint</title>
+  <title>Launch a Startup in 2 Hours — Launch House</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -70,8 +70,8 @@
     /* NAV */
     .nav { position: sticky; top: 0; z-index: 20; background: rgba(246,245,240,.86); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(12,14,16,.06); }
     .nav-in { height: 70px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
-    .brand-mark { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; background: var(--dark); color: var(--lime); font-family: "Space Grotesk"; font-size: 13px; }
+    .brand { display:inline-flex; align-items:center; }
+    .brand-logo { width:190px; height:auto; display:block; }
     .nav-cta { min-height: 42px; padding: 0 16px; border-radius: 11px; font-size: 14px; }
 
     /* HERO */
@@ -297,6 +297,224 @@
     .after .ba-line::before { content:"✓  "; color:var(--lime); }
     .ba-foot { margin-top:26px; font-family:"Space Grotesk"; font-size:19px; }
 
+    /* LAUNCH HOUSE BRAND / STATS */
+    .lh-stats { background:#1d1f24; color:#fff; padding:88px 0 92px; position:relative; overflow:hidden; }
+    .lh-stats::after { content:""; position:absolute; width:340px; height:760px; right:-160px; top:-80px; border:5px solid rgba(255,255,255,.8); border-left-color:transparent; border-radius:48% 0 0 48%; transform:rotate(18deg); pointer-events:none; }
+    .lh-stats::before { content:""; position:absolute; width:300px; height:740px; right:-190px; top:-65px; border:2px solid rgba(255,255,255,.75); border-left-color:transparent; border-radius:48% 0 0 48%; transform:rotate(18deg); pointer-events:none; }
+    .stats-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .stat-card { background:#090b0d; border:1px solid rgba(255,255,255,.14); border-radius:7px; padding:22px 22px 24px; min-height:185px; }
+    .stat-label { font-size:15px; color:#fff; margin-bottom:25px; }
+    .stat-value { font-family:"Space Grotesk"; font-size:clamp(42px,4vw,62px); line-height:.95; letter-spacing:-.055em; color:#f3f4f5; }
+
+    /* STUDENT BUILDS */
+    .student-builds { background:#fff; overflow:hidden; }
+    .student-builds .section-head { margin-bottom:32px; }
+    .student-builds-note { color:#7d8386; font-size:12px; margin-top:8px; }
+    .carousel-shell { position:relative; overflow:hidden; margin-top:28px; }
+    .carousel-shell::before, .carousel-shell::after { content:""; position:absolute; top:0; bottom:0; width:110px; z-index:2; pointer-events:none; }
+    .carousel-shell::before { left:0; background:linear-gradient(90deg,#fff 5%,rgba(255,255,255,0)); }
+    .carousel-shell::after { right:0; background:linear-gradient(270deg,#fff 5%,rgba(255,255,255,0)); }
+    .student-track { display:flex; width:max-content; gap:14px; animation:studentScroll 32s linear infinite; padding:10px 0 22px; }
+    .carousel-shell:hover .student-track { animation-play-state:paused; }
+    .student-card { width:310px; flex:0 0 310px; background:#f8f7f2; border:1px solid rgba(12,14,16,.09); border-radius:22px; padding:20px; box-shadow:0 12px 34px rgba(12,14,16,.06); }
+    .student-card-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .student-avatar { width:46px; height:46px; border-radius:50%; display:grid; place-items:center; background:#101416; color:var(--lime); font-family:"Space Grotesk"; font-weight:800; }
+    .student-sample { font-size:9px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#8a6b00; background:#fff0ad; border:1px solid #f0d777; border-radius:999px; padding:6px 8px; }
+    .student-name { margin-top:16px; font-family:"Space Grotesk"; font-weight:700; font-size:20px; letter-spacing:-.03em; }
+    .student-meta { color:#73797c; font-size:12px; margin-top:2px; }
+    .student-idea { margin-top:16px; min-height:52px; font-size:15px; line-height:1.3; color:#24292b; }
+    .student-data { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+    .student-stat { background:#fff; border:1px solid rgba(12,14,16,.07); border-radius:14px; padding:11px; }
+    .student-stat span { display:block; color:#8b9194; font-size:9px; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
+    .student-stat strong { display:block; margin-top:5px; font-family:"Space Grotesk"; font-size:18px; letter-spacing:-.03em; }
+    @keyframes studentScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+    /* TEAM */
+    .team { background:#fff; }
+    .team-title { font-family:"Space Grotesk"; font-size:clamp(38px,4.6vw,62px); letter-spacing:-.055em; margin:0 0 38px; color:#10243a; }
+    .team-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px 90px; }
+    .team-member { display:grid; grid-template-columns:160px 1fr; gap:28px; align-items:center; }
+    .team-photo { width:150px; height:150px; border-radius:50%; object-fit:cover; display:block; }
+    .team-member h3 { margin:0 0 10px; font-family:"Space Grotesk"; font-size:25px; letter-spacing:-.03em; color:#10243a; }
+    .team-member p { margin:0; color:#435364; font-size:16px; line-height:1.5; }
+
+    /* FOOTER */
+    .site-footer { background:#eff1f4; color:#10243a; padding:52px 0 30px; border-top:1px solid rgba(12,14,16,.06); }
+    .footer-brand { display:flex; align-items:center; justify-content:center; }
+    .footer-brand img { width:210px; max-width:100%; height:auto; }
+    .footer-description { max-width:760px; margin:24px auto 0; text-align:center; color:#192a3b; font-size:18px; line-height:1.55; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:34px; padding-top:18px; border-top:1px solid rgba(12,14,16,.08); color:#687585; font-size:12px; }
+
+
+    /* LIVING / MOTION SYSTEM */
+    :root { --mx: 50%; --my: 50%; }
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:2;
+      background:radial-gradient(420px circle at var(--mx) var(--my), rgba(199,255,65,.055), transparent 70%);
+      opacity:0; transition:opacity .35s ease;
+    }
+    body.is-hovering::before { opacity:1; }
+    .nav { transition: box-shadow .25s ease, background .25s ease, transform .25s ease; }
+    .nav.scrolled { box-shadow:0 8px 30px rgba(0,0,0,.08); background:rgba(246,245,240,.94); }
+    .nav::after { content:""; position:absolute; left:0; bottom:-1px; height:2px; width:var(--scroll,0%); background:var(--lime-2); transform-origin:left; }
+    .btn-primary { position:relative; overflow:hidden; }
+    .btn-primary::before {
+      content:""; position:absolute; inset:-45%; background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.34) 50%,transparent 58%);
+      transform:translateX(-70%) rotate(8deg); transition:transform .7s ease;
+    }
+    .btn-primary:hover::before { transform:translateX(70%) rotate(8deg); }
+    .btn span, .btn { position:relative; z-index:1; }
+
+    .hero { isolation:isolate; }
+    .hero::before { animation:aurora 9s ease-in-out infinite alternate; }
+    .hero::after { animation:aurora2 12s ease-in-out infinite alternate; }
+    @keyframes aurora { 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(-45px,25px,0) scale(1.08)} }
+    @keyframes aurora2 { 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(70px,-20px,0) scale(1.12)} }
+
+    .hero-visual { perspective:1200px; }
+    .dashboard { transform:rotate(1deg) translate3d(0,0,0); transition:transform .18s ease-out, box-shadow .25s ease; will-change:transform; }
+    .hero-visual:hover .dashboard { box-shadow:0 45px 110px rgba(0,0,0,.56); }
+    .float-card { will-change:transform; }
+    .float-card.small { animation:floatSmall 5s ease-in-out infinite; }
+    .float-card.bottom { animation:floatBottom 6s ease-in-out infinite 1s; }
+    @keyframes floatSmall { 0%,100%{transform:translate3d(0,0,0) rotate(0)} 50%{transform:translate3d(0,-9px,0) rotate(-1deg)} }
+    @keyframes floatBottom { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,8px,0)} }
+    .dash-progress span { animation:progressPulse 2.6s ease-in-out infinite; transform-origin:left; }
+    @keyframes progressPulse { 0%,100%{filter:brightness(1); transform:scaleX(.98)} 50%{filter:brightness(1.18); transform:scaleX(1)} }
+    .live b { animation:livePulse 1.6s ease-in-out infinite; }
+    @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(199,255,65,.38)} 50%{box-shadow:0 0 0 7px rgba(199,255,65,0)} }
+
+    .journey-card { transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .journey-card:hover { transform:translateY(-8px); border-color:rgba(199,255,65,.28); box-shadow:0 25px 70px rgba(0,0,0,.2); }
+    .journey-card::after { transition:transform .4s ease, background .4s ease; }
+    .journey-card:hover::after { transform:scale(1.5); background:rgba(199,255,65,.12); }
+    .mini-ui .bar.active { animation:barBreathe 2.2s ease-in-out infinite; }
+    @keyframes barBreathe { 0%,100%{opacity:.75} 50%{opacity:1; box-shadow:0 0 18px rgba(199,255,65,.16)} }
+
+    .database { transition:transform .35s ease, box-shadow .35s ease; }
+    .database:hover { transform:translateY(-6px) rotate(.2deg); box-shadow:0 32px 90px rgba(12,14,16,.15); }
+    .db-row { transition:background .2s ease, transform .2s ease; }
+    .db-row:hover { background:#f8fbf4; transform:translateX(3px); }
+    .db-tag { transition:transform .18s ease, background .18s ease; }
+    .db-row:hover .db-tag { transform:translateY(-1px); background:#e8f4d9; }
+
+    .build-demo { transition:transform .35s ease, box-shadow .35s ease; }
+    .build-demo:hover { transform:translateY(-6px); box-shadow:0 42px 100px rgba(0,0,0,.45); }
+    .prompt-text { min-height:38px; }
+    .site-preview { transition:transform .3s ease; }
+    .build-demo:hover .site-preview { transform:translateY(-2px); }
+    .site-live strong { position:relative; }
+    .site-live strong::after { content:""; display:inline-block; width:6px; height:6px; margin-left:5px; vertical-align:middle; border-radius:50%; background:#7dbb44; animation:livePulse 1.6s ease-in-out infinite; }
+
+    .live-screen { transition:transform .35s ease, box-shadow .35s ease; }
+    .live-screen:hover { transform:translateY(-6px); box-shadow:0 42px 110px rgba(12,14,16,.22); }
+    .live-banner .live-badge { animation:badgeGlow 2.4s ease-in-out infinite; }
+    @keyframes badgeGlow { 0%,100%{box-shadow:0 0 0 0 rgba(199,255,65,.08)} 50%{box-shadow:0 0 28px rgba(199,255,65,.08)} }
+    .site-large .tile { transition:transform .25s ease, box-shadow .25s ease; }
+    .site-large .tile:hover { transform:translateY(-5px); box-shadow:0 22px 50px rgba(0,0,0,.12); }
+
+    .funnel { position:relative; overflow:hidden; }
+    .funnel::before { content:""; position:absolute; width:240px; height:240px; right:-130px; top:-100px; background:radial-gradient(circle,rgba(199,255,65,.22),transparent 68%); filter:blur(4px); animation:funnelGlow 8s ease-in-out infinite alternate; }
+    @keyframes funnelGlow { from{transform:translate(0,0)} to{transform:translate(-60px,80px)} }
+    .funnel-step { transition:transform .25s ease, background .25s ease, padding .25s ease; position:relative; z-index:1; }
+    .funnel-step:hover { transform:translateX(5px); background:rgba(255,255,255,.55); padding-left:8px; padding-right:8px; border-radius:14px; }
+    .framework-tags span { transition:transform .2s ease, border-color .2s ease, color .2s ease; }
+    .framework-tags span:hover { transform:translateY(-2px); color:#fff; border-color:rgba(199,255,65,.3); }
+
+    .week { transition:transform .28s ease, box-shadow .28s ease; }
+    .week:hover { transform:translateY(-7px); box-shadow:0 18px 44px rgba(12,14,16,.11); }
+    .week::after { content:""; display:block; height:4px; margin-top:18px; border-radius:999px; background:linear-gradient(90deg,var(--lime),rgba(199,255,65,.06)); background-size:160% 100%; animation:shimmer 3.6s linear infinite; }
+    @keyframes shimmer { to{background-position:-160% 0} }
+
+    .offer-card { transition:transform .28s ease, box-shadow .28s ease; }
+    .offer-card:hover { transform:translateY(-5px); box-shadow:0 35px 100px rgba(12,14,16,.16); }
+    .price { animation:priceBreath 4s ease-in-out infinite; }
+    @keyframes priceBreath { 0%,100%{opacity:1} 50%{opacity:.92} }
+
+    .ba-card { transition:transform .28s ease, box-shadow .28s ease; }
+    .ba-card:hover { transform:translateY(-5px); box-shadow:0 20px 55px rgba(12,14,16,.09); }
+    .ba-card.after { position:relative; overflow:hidden; }
+    .ba-card.after::before { content:""; position:absolute; top:0; left:-30%; width:20%; height:100%; background:linear-gradient(90deg,transparent,rgba(199,255,65,.08),transparent); transform:skewX(-18deg); animation:cardSweep 4.5s ease-in-out infinite; pointer-events:none; }
+    @keyframes cardSweep { 0%,55%{left:-30%} 100%{left:130%} }
+
+    .stat-card { transition:transform .25s ease, border-color .25s ease, background .25s ease; }
+    .stat-card:hover { transform:translateY(-5px); border-color:rgba(199,255,65,.35); background:#0c0f11; }
+    .stat-value[data-counter] { font-variant-numeric:tabular-nums; }
+    .lh-stats::after,.lh-stats::before { animation:orbitLines 13s ease-in-out infinite alternate; }
+    @keyframes orbitLines { from{transform:rotate(18deg) translateY(0)} to{transform:rotate(24deg) translateY(28px)} }
+
+    .student-card { transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .student-card:hover { transform:translateY(-8px); box-shadow:0 25px 65px rgba(12,14,16,.12); border-color:rgba(12,14,16,.18); }
+    .student-card .student-avatar { transition:transform .25s ease; }
+    .student-card:hover .student-avatar { transform:rotate(-6deg) scale(1.05); }
+
+    .team-member { transition:transform .25s ease; }
+    .team-member:hover { transform:translateY(-4px); }
+    .team-photo { transition:transform .35s ease, filter .35s ease; }
+    .team-member:hover .team-photo { transform:scale(1.035); filter:saturate(1.05); }
+
+    .eco-step { transition:transform .25s ease, border-color .25s ease, background .25s ease; }
+    .eco-step:hover { transform:translateY(-6px); border-color:rgba(199,255,65,.24); background:#151a1d; }
+
+    .footer-brand img { transition:transform .25s ease; }
+    .footer-brand:hover img { transform:translateY(-2px) scale(1.015); }
+
+    /* Scroll reveal */
+    [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1); }
+    [data-reveal="left"] { transform:translateX(-28px); }
+    [data-reveal="right"] { transform:translateX(28px); }
+    [data-reveal="scale"] { transform:scale(.96); }
+    [data-reveal].revealed { opacity:1; transform:none; }
+    .reveal-delay-1{transition-delay:.08s}.reveal-delay-2{transition-delay:.16s}.reveal-delay-3{transition-delay:.24s}.reveal-delay-4{transition-delay:.32s}
+
+    /* Section accent line / viewport progress */
+    .section, .lh-stats, .student-builds, .team, .site-footer { position:relative; }
+    .section:not(.dark):not(.dark-2)::before, .student-builds::before, .team::before {
+      content:""; position:absolute; left:50%; top:0; width:min(1180px,calc(100% - 40px)); height:1px; transform:translateX(-50%); background:linear-gradient(90deg,transparent,rgba(12,14,16,.08),transparent);
+    }
+    .dark::before, .ecosystem::before { background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent) !important; }
+
+    /* Magnetic CTA hover */
+    .btn-magnetic { transition:transform .15s ease, box-shadow .18s ease; }
+
+    /* Mobile refinements */
+    @media (max-width:700px) {
+      body::before { display:none; }
+      .hero::before { width:340px; height:340px; right:-180px; top:-140px; }
+      .hero::after { width:360px; height:360px; left:-180px; bottom:-230px; }
+      .float-card.small { right:-4px; top:28px; transform:scale(.86); transform-origin:top right; }
+      .float-card.bottom { left:0; bottom:12px; transform:scale(.84); transform-origin:bottom left; }
+      .dashboard { transform:rotate(0); }
+      .journey-card:hover,.student-card:hover,.week:hover,.ba-card:hover,.offer-card:hover,.live-screen:hover,.build-demo:hover { transform:none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
+      [data-reveal] { opacity:1 !important; transform:none !important; }
+    }
+
+    /* RESPONSIVE ADDITIONS */
+    @media (max-width:980px) {
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .team-grid { grid-template-columns:1fr; gap:30px; }
+    }
+    @media (max-width:700px) {
+      .brand-logo { width:165px; }
+      .lh-stats { padding:72px 0; }
+      .stats-grid { grid-template-columns:1fr; }
+      .stat-card { min-height:150px; }
+      .stat-value { font-size:52px; }
+      .team-title { margin-bottom:28px; }
+      .team-member { grid-template-columns:94px 1fr; gap:18px; }
+      .team-photo { width:94px; height:94px; }
+      .team-member h3 { font-size:20px; }
+      .team-member p { font-size:13px; }
+      .student-card { width:278px; flex-basis:278px; }
+      .carousel-shell::before, .carousel-shell::after { width:45px; }
+      .footer-description { font-size:16px; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+    }
+
     /* FAQ */
     .faq { background:#fff; }
     .faq-wrap { max-width:900px; }
@@ -371,16 +589,14 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior:auto; }
-      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .student-track { animation:none !important; transform:none !important; }
     }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="wrap nav-in">
-      <a class="brand" href="#top" aria-label="Startup Build Sprint home">
-        <span class="brand-mark">SB</span><span>Startup Build Sprint</span>
-      </a>
+      <a class="brand" href="#top" aria-label="Launch House home"><img src="assets/launch-house-logo.svg" alt="Launch House" class="brand-logo"></a>
       <a class="btn btn-primary nav-cta" href="#offer">Launch My Startup →</a>
     </div>
   </nav>
@@ -389,7 +605,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy" data-reveal="left">
           <div class="eyebrow">A 2-hour founder sprint</div>
           <h1 class="display">Launch a Startup <span>in 2 Hours.</span></h1>
           <p class="hero-sub">Find an idea, build the first version with AI, put it live, and know what to do next.</p>
@@ -404,14 +620,14 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Visual preview of a startup being built and launched">
+        <div class="hero-visual" data-reveal="right" aria-label="Visual preview of a startup being built and launched">
           <div class="float-card small">
             <div class="float-kicker">Your startup match</div>
             <div class="float-title">92% match</div>
             <div class="float-row"><span>AI sales tool</span><span class="score">Strong fit</span></div>
           </div>
           <div class="dashboard">
-            <div class="dash-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dash-title">startup-build.app</span></div>
+            <div class="dash-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dash-title"><span data-live-status>startup-build.app</span></span></div>
             <div class="dash-body">
               <div class="dash-label">Your 2-hour build</div>
               <div class="build-card">
@@ -449,17 +665,33 @@
       </div>
     </section>
 
+    <!-- LAUNCH HOUSE STATS -->
+    <section class="lh-stats" aria-label="Launch House statistics">
+      <div class="wrap">
+        <div class="stats-grid" data-reveal="scale">
+          <div class="stat-card"><div class="stat-label">Founder Success Rate</div><div class="stat-value" data-counter data-value="75" data-suffix="%">0%</div></div>
+          <div class="stat-card"><div class="stat-label">Startups Launched</div><div class="stat-value" data-counter data-value="300" data-suffix="+">0+</div></div>
+          <div class="stat-card"><div class="stat-label">Student Revenue Generated</div><div class="stat-value" data-counter data-value="31.1" data-prefix="₹" data-suffix="Cr+">₹0Cr+</div></div>
+          <div class="stat-card"><div class="stat-label">Active Community Members</div><div class="stat-value" data-counter data-value="25403" data-format="number">0</div></div>
+          <div class="stat-card"><div class="stat-label">Idea Validation Success</div><div class="stat-value" data-counter data-value="90" data-suffix="%">0%</div></div>
+          <div class="stat-card"><div class="stat-label">First Customer Conversion Rate</div><div class="stat-value" data-counter data-value="100" data-suffix="%">0%</div></div>
+          <div class="stat-card"><div class="stat-label">Funding Raised By Students</div><div class="stat-value" data-counter data-value="14.6" data-prefix="₹" data-suffix="Cr+">₹0Cr+</div></div>
+          <div class="stat-card"><div class="stat-label">Businesses Scaled To Profitability</div><div class="stat-value" data-counter data-value="198" data-suffix="+">0+</div></div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROBLEM -->
     <section class="section problem">
       <div class="wrap problem-grid">
-        <div class="problem-copy">
+        <div class="problem-copy" data-reveal="left">
           <div class="eyebrow">The problem</div>
           <h2 class="display">You want to start a business.</h2>
           <p>But the questions keep getting in the way.</p>
           <div class="problem-end">So you keep thinking. You keep saving ideas. You keep watching videos.</div>
           <div class="problem-end"><strong>And months later, you still haven't built anything.</strong></div>
         </div>
-        <div class="questions">
+        <div class="questions" data-reveal="right">
           <div class="question"><strong>What should I build?</strong><em>01</em></div>
           <div class="question"><strong>What if I choose the wrong idea?</strong><em>02</em></div>
           <div class="question"><strong>Do I need a developer?</strong><em>03</em></div>
@@ -496,7 +728,7 @@
     <!-- IDEA DATABASE -->
     <section class="section idea">
       <div class="wrap idea-layout">
-        <div class="idea-copy">
+        <div class="idea-copy" data-reveal="left">
           <div class="eyebrow">01 · Find your idea</div>
           <h2 class="display">Don't start with a blank page.</h2>
           <p>Get access to a growing database of <strong>1,000+ startup ideas and business opportunities</strong>.</p>
@@ -507,7 +739,7 @@
             <div class="bullet"><span class="check">✓</span><span>Use the Founder Assessment to narrow your list.</span></div>
           </div>
         </div>
-        <div class="database" aria-label="Mockup of startup idea database">
+        <div class="database" data-reveal="right" aria-label="Mockup of startup idea database">
           <div class="db-top"><div class="search">⌕ &nbsp; Search startup ideas...</div><div class="filter">Industry ▾</div></div>
           <div class="db-head"><div>Opportunity</div><div>Model</div><div>Capital</div><div>Fit</div></div>
           <div class="db-row"><div class="db-name"><strong>AI Resume Screener</strong><span>Recruitment · B2B</span></div><div><span class="db-tag">SaaS</span></div><div><span class="db-tag">Low</span></div><div class="db-fit">★★★★★</div></div>
@@ -521,7 +753,7 @@
     <!-- BUILD -->
     <section class="section build">
       <div class="wrap build-grid">
-        <div class="build-copy">
+        <div class="build-copy" data-reveal="left">
           <div class="eyebrow">02–03 · Choose + build</div>
           <h2 class="display">Now comes the fun part.</h2>
           <p>Pick one idea. Then use AI to turn it into a real first version.</p>
@@ -532,7 +764,7 @@
           </div>
           <p style="font-size:14px;color:#d4d9db">You build it. Not just watch someone else build it.</p>
         </div>
-        <div class="build-demo" aria-label="Mockup of AI turning a prompt into a live startup">
+        <div class="build-demo" data-reveal="right" aria-label="Mockup of AI turning a prompt into a live startup">
           <div class="demo-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px;color:#7f878c;font-size:11px">AI Builder</span></div>
           <div class="demo-content">
             <div class="prompt"><div class="prompt-label">Your prompt</div><div class="prompt-text">Build a simple landing page for a tool that helps Indian recruiters screen resumes faster.</div></div>
@@ -545,6 +777,38 @@
               </div>
               <div class="site-live"><span>Your first version is ready.</span><strong>● LIVE</strong></div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENT BUILDS -->
+    <section class="section student-builds">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What founders are building</div>
+          <h2 class="display">Real ideas. Real builds.<br>Built fast.</h2>
+          <p>See the kind of businesses people can take from idea to first version. The cards below are sample placeholders until verified student data is added.</p>
+          <div class="student-builds-note">⚠ Demo content — replace names, ages and MRR with verified student results before publishing.</div>
+        </div>
+        <div class="carousel-shell" aria-label="Scrolling startup build examples">
+          <div class="student-track">
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AM</div><span class="student-sample">Sample build</span></div><div class="student-name">Aarav Mehta</div><div class="student-meta">24 · Bengaluru</div><div class="student-idea">AI invoice assistant for Indian small businesses.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹18.4K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">KS</div><span class="student-sample">Sample build</span></div><div class="student-name">Kavya Shah</div><div class="student-meta">22 · Mumbai</div><div class="student-idea">AI tool that turns raw product notes into ad creatives.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹24.7K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">RV</div><span class="student-sample">Sample build</span></div><div class="student-name">Rohan Verma</div><div class="student-meta">27 · Delhi NCR</div><div class="student-idea">Simple lead finder for local B2B service companies.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹31.2K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">PD</div><span class="student-sample">Sample build</span></div><div class="student-name">Priya Desai</div><div class="student-meta">25 · Pune</div><div class="student-idea">Personal finance tracker made for first-job earners.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹12.8K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AN</div><span class="student-sample">Sample build</span></div><div class="student-name">Aditya Nair</div><div class="student-meta">23 · Kochi</div><div class="student-idea">AI study planner that builds daily exam schedules.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹16.5K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">NT</div><span class="student-sample">Sample build</span></div><div class="student-name">Neha Tripathi</div><div class="student-meta">26 · Lucknow</div><div class="student-idea">WhatsApp-based booking system for neighborhood clinics.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹21.3K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">SI</div><span class="student-sample">Sample build</span></div><div class="student-name">Siddharth Iyer</div><div class="student-meta">28 · Chennai</div><div class="student-idea">AI sales assistant for small Indian recruitment firms.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹27.9K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+
+            <!-- duplicated for seamless marquee -->
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AM</div><span class="student-sample">Sample build</span></div><div class="student-name">Aarav Mehta</div><div class="student-meta">24 · Bengaluru</div><div class="student-idea">AI invoice assistant for Indian small businesses.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹18.4K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">KS</div><span class="student-sample">Sample build</span></div><div class="student-name">Kavya Shah</div><div class="student-meta">22 · Mumbai</div><div class="student-idea">AI tool that turns raw product notes into ad creatives.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹24.7K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">RV</div><span class="student-sample">Sample build</span></div><div class="student-name">Rohan Verma</div><div class="student-meta">27 · Delhi NCR</div><div class="student-idea">Simple lead finder for local B2B service companies.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹31.2K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">PD</div><span class="student-sample">Sample build</span></div><div class="student-name">Priya Desai</div><div class="student-meta">25 · Pune</div><div class="student-idea">Personal finance tracker made for first-job earners.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹12.8K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">AN</div><span class="student-sample">Sample build</span></div><div class="student-name">Aditya Nair</div><div class="student-meta">23 · Kochi</div><div class="student-idea">AI study planner that builds daily exam schedules.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹16.5K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">NT</div><span class="student-sample">Sample build</span></div><div class="student-name">Neha Tripathi</div><div class="student-meta">26 · Lucknow</div><div class="student-idea">WhatsApp-based booking system for neighborhood clinics.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹21.3K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
+            <article class="student-card"><div class="student-card-head"><div class="student-avatar">SI</div><span class="student-sample">Sample build</span></div><div class="student-name">Siddharth Iyer</div><div class="student-meta">28 · Chennai</div><div class="student-idea">AI sales assistant for small Indian recruitment firms.</div><div class="student-data"><div class="student-stat"><span>MRR</span><strong>₹27.9K</strong></div><div class="student-stat"><span>Launched</span><strong>Jul 2026</strong></div></div></article>
           </div>
         </div>
       </div>
@@ -617,7 +881,7 @@
         <div>
           <div class="eyebrow">What you get</div>
           <h2 class="display" style="font-size:clamp(44px,5.5vw,74px);line-height:.98;margin:14px 0 18px">Everything you need to go from idea to first launch.</h2>
-          <div class="value-list">
+          <div class="value-list" data-reveal="left">
             <div class="feature"><div class="feature-icon">01</div><div><h3>Founder Assessment</h3><p>Find startup ideas that fit you.</p></div></div>
             <div class="feature"><div class="feature-icon">1K+</div><div><h3>Startup Idea Database</h3><p>Explore researched business opportunities.</p></div></div>
             <div class="feature"><div class="feature-icon">✓</div><div><h3>Idea Scorecard</h3><p>Compare ideas before you commit.</p></div></div>
@@ -655,7 +919,7 @@
           <p>A laptop. A willingness to build. And a way to start without waiting for the “perfect” moment.</p>
         </div>
         <div>
-          <div class="fit-list">
+          <div class="fit-list" data-reveal="right">
             <div class="fit"><strong>✓ No coding skills</strong><span>AI helps you build the first version.</span></div>
             <div class="fit"><strong>✓ No big team</strong><span>Start small. Learn as you go.</span></div>
             <div class="fit"><strong>✓ No perfect idea</strong><span>We help you narrow your choices.</span></div>
@@ -678,6 +942,23 @@
         <div class="ba-grid">
           <div class="ba-card before"><h3>Before</h3><div class="ba-lines"><div class="ba-line">“I want to start a startup.”</div><div class="ba-line">“I don't know what to build.”</div><div class="ba-line">“I don't know how to code.”</div><div class="ba-line">“I don't know where to start.”</div><div class="ba-line">“I have no customers.”</div></div></div>
           <div class="ba-card after"><h3>After</h3><div class="ba-lines"><div class="ba-line">I picked my idea.</div><div class="ba-line">I built the first version.</div><div class="ba-line">My startup is live.</div><div class="ba-line">I know how to get leads.</div><div class="ba-line">I have a 30–60 day plan.</div></div><div class="ba-foot">That's the transformation.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section team">
+      <div class="wrap">
+        <h2 class="team-title">Meet our team</h2>
+        <div class="team-grid" data-reveal="scale">
+          <article class="team-member">
+            <img class="team-photo" src="assets/raghav-nitish.jpg" alt="Raghav Nitish" loading="lazy" />
+            <div><h3>Raghav Nitish</h3><p>2X Founder, Angel Investor, Content Creator, 9 years of Business experience</p></div>
+          </article>
+          <article class="team-member">
+            <img class="team-photo" src="assets/saurav.jpg" alt="Saurav" loading="lazy" />
+            <div><h3>Saurav</h3><p>Serial entrepreneur, Certified Top 1% educator in India, 8 years of business experience</p></div>
+          </article>
         </div>
       </div>
     </section>
@@ -734,18 +1015,152 @@
     </section>
   </main>
 
+
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-brand"><img src="assets/launch-house-logo.svg" alt="Launch House" /></div>
+      <p class="footer-description">Launch House is a Startup Accelerator and founder ecosystem helping Indian founders turn ideas into real companies. From building and scaling to raising funds.</p>
+      <div class="footer-bottom"><span>© 2026 Launch House. All rights reserved.</span><span>Build. Launch. Grow.</span></div>
+    </div>
+  </footer>
+
   <div class="mobile-cta">
     <a class="btn btn-primary" href="#offer">₹197 · Launch My Startup →</a>
   </div>
 
   <script>
-    // Lightweight scroll-reveal. Respects prefers-reduced-motion.
+    // Living landing page interactions: scroll progress, reveals, counters, hero motion, dynamic mockup states.
+    (function(){
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Navigation / viewport progress
+      const nav = document.querySelector('.nav');
+      const updateScroll = () => {
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+        document.documentElement.style.setProperty('--scroll', pct + '%');
+        nav?.classList.toggle('scrolled', window.scrollY > 12);
+      };
+      updateScroll();
+      window.addEventListener('scroll', updateScroll, {passive:true});
+
+      // Scroll reveal
+      if (!reduced && 'IntersectionObserver' in window) {
+        const reveal = document.querySelectorAll('[data-reveal]');
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('revealed');
+            io.unobserve(entry.target);
+          });
+        }, {threshold:.12, rootMargin:'0px 0px -30px 0px'});
+        reveal.forEach(el => io.observe(el));
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('revealed'));
+      }
+
+      // Animated stats: count only when the section comes into view.
+      const counters = document.querySelectorAll('[data-counter]');
+      const format = (value, el) => {
+        if (el.dataset.format === 'number') return Math.round(value).toLocaleString('en-IN');
+        const decimals = String(el.dataset.value).includes('.') ? 1 : 0;
+        return value.toFixed(decimals);
+      };
+      const runCounter = el => {
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        const target = Number(el.dataset.value || 0);
+        const duration = reduced ? 1 : 1200;
+        const start = performance.now();
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const tick = now => {
+          const p = Math.min(1, (now-start)/duration);
+          const eased = 1 - Math.pow(1-p, 3);
+          el.textContent = prefix + format(target*eased, el) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      if ('IntersectionObserver' in window) {
+        const cio = new IntersectionObserver(entries => entries.forEach(e => {
+          if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
+        }), {threshold:.35});
+        counters.forEach(el => cio.observe(el));
+      } else counters.forEach(runCounter);
+
+      // Hero mouse parallax — subtle, only on pointer devices.
+      const hero = document.querySelector('.hero');
+      const visual = document.querySelector('.hero-visual');
+      const dashboard = document.querySelector('.dashboard');
+      if (!reduced && hero && visual && dashboard && window.matchMedia('(pointer:fine)').matches) {
+        hero.addEventListener('pointermove', e => {
+          const r = hero.getBoundingClientRect();
+          const x = (e.clientX-r.left)/r.width - .5;
+          const y = (e.clientY-r.top)/r.height - .5;
+          dashboard.style.transform = `rotate(${1 + x*1.2}deg) translate3d(${x*9}px,${y*7}px,0)`;
+          document.documentElement.style.setProperty('--mx', `${e.clientX}px`);
+          document.documentElement.style.setProperty('--my', `${e.clientY}px`);
+          document.body.classList.add('is-hovering');
+        });
+        hero.addEventListener('pointerleave', () => {
+          dashboard.style.transform = 'rotate(1deg) translate3d(0,0,0)';
+          document.body.classList.remove('is-hovering');
+        });
+      }
+
+      // Slightly magnetic CTAs on desktop.
+      const magnets = document.querySelectorAll('.btn-primary');
+      if (!reduced && window.matchMedia('(pointer:fine)').matches) {
+        magnets.forEach(btn => {
+          btn.classList.add('btn-magnetic');
+          btn.addEventListener('pointermove', e => {
+            const r=btn.getBoundingClientRect();
+            const dx=(e.clientX-(r.left+r.width/2))*0.08;
+            const dy=(e.clientY-(r.top+r.height/2))*0.08;
+            btn.style.transform=`translate(${dx}px,${dy}px)`;
+          });
+          btn.addEventListener('pointerleave',()=>btn.style.transform='');
+        });
+      }
+
+      // Dynamic hero mockup: cycles through stages without changing the sales copy.
+      const status = document.querySelector('[data-live-status]');
+      const stepLabels = document.querySelectorAll('.dash-step strong');
+      const progress = document.querySelector('.dash-progress span');
+      const buildNames = ['FinFlow','LeadPilot','FitTrack','TaxMate','ReplyAI'];
+      let idx=0;
+      if (!reduced && status && stepLabels.length && progress) {
+        const states=[
+          {name:'idea selected',width:'26%', active:0},
+          {name:'AI building',width:'53%', active:1},
+          {name:'page ready',width:'79%', active:2},
+          {name:'live',width:'100%', active:3}
+        ];
+        let sidx=0;
+        setInterval(()=>{
+          const state=states[sidx++%states.length];
+          status.textContent=buildNames[idx++%buildNames.length].toLowerCase()+'.app';
+          progress.style.width=state.width;
+          stepLabels.forEach((el,i)=>{
+            el.textContent = i < state.active ? ['Idea ✓','Build ✓','Page ✓','Customers ✓'][i] : ['Idea','Build','Page','Customers'][i];
+            el.closest('.dash-step')?.classList.toggle('done', i < state.active);
+          });
+        }, 2500);
+      }
+    })();
+
+    // Existing lightweight interactions / fallback for the original page.
     (function(){
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduced || !('IntersectionObserver' in window)) return;
-      const selectors = ['.journey-card','.db-row','.feature','.week','.ba-card','.eco-step','.funnel-step'];
+      const selectors = ['.journey-card','.db-row','.feature','.week','.ba-card','.eco-step','.funnel-step','.student-card','.stat-card','.team-member'];
       const els = document.querySelectorAll(selectors.join(','));
+      // Do not override elements already handled by the richer data-reveal system.
       els.forEach((el, i) => {
+        if (el.hasAttribute('data-reveal')) return;
         el.style.opacity = '0';
         el.style.transform = 'translateY(16px)';
         el.style.transition = 'opacity .55s ease, transform .55s ease';
@@ -759,8 +1174,9 @@
           io.unobserve(entry.target);
         });
       }, {threshold:.12});
-      els.forEach(el => io.observe(el));
+      els.forEach(el => { if (!el.hasAttribute('data-reveal')) io.observe(el); });
     })();
   </script>
+
 </body>
 </html>
