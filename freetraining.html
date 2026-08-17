@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f7f7f3">
-<meta name="description" content="Free training: How To Launch A Profitable Startup.">
+<meta name="description" content="Free training: How To Launch A Startup In 2 Hours.">
 <title>Free Training — Launch House</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -162,7 +162,7 @@ footer{
 <header class="top">
   <div class="wrap top-inner">
     <a href="/" aria-label="Launch House">
-      <img src="assets/launch-house-logo-nobg.png" alt="Launch House" class="logo">
+      <img src="assets/launch-house-logo.png" alt="Launch House" class="logo">
     </a>
   </div>
 </header>
@@ -176,7 +176,7 @@ footer{
       <h1>How To Launch A Profitable Startup In 2026</h1>
 
       <p class="sub">
-        See how to go from an idea to a first working version — even if you don't know how to code.
+        Framework used by Successful founders to go from idea to profit to Funding
       </p>
 
       <div class="video-wrap">
@@ -186,7 +186,7 @@ footer{
             class="gumlet-player"
             allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
             allowfullscreen
-            title="How To Launch A Profitable Startup In 2026"
+            title="How To Launch A Startup In 2 Hours"
           ></iframe>
         </div>
       </div>
@@ -214,7 +214,7 @@ footer{
   FINAL DEPLOYMENT CONFIG
 
   The Gumlet video URL is read from a URL query parameter:
-  /https://gumlet.tv/watch/69cf70203dba9e85510f9b5b/
+  /free-training?v=YOUR_GUMLET_EMBED_URL
 
   This keeps the HTML itself free of placeholder URLs.
 
@@ -302,18 +302,10 @@ footer{
       }
     }
 
-    /*
-      Some player events report the 30-second position directly.
-      This does not unlock on a seek unless the player also reports
-      normal playing state around that position.
-    */
+
   });
 
-  /*
-    Some Gumlet implementations can be configured to expose playback
-    events through postMessage. This listener also handles a completion
-    event, ensuring the CTA remains available after the video continues.
-  */
+
   window.addEventListener("message", function(event){
     const raw = event.data;
     const text = typeof raw === "string" ? raw.toLowerCase() : "";
@@ -326,11 +318,6 @@ footer{
     }
   });
 
-  /*
-    No video URL means the iframe remains empty rather than showing
-    fake content. This is intentional: a final page should never
-    pretend a training video exists when one has not been connected.
-  */
 })();
 </script>
 
