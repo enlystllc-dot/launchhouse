@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f7f3">
+  <meta name="description" content="Free training: How to Launch a Startup in 2 Hours.">
+  <title>Free Training — Launch House</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f7f3;
+      --paper:#ffffff;
+      --ink:#111416;
+      --muted:#737a7d;
+      --line:rgba(17,20,22,.10);
+      --lime:#c7ff41;
+      --max:980px;
+      --shadow:0 22px 70px rgba(17,20,22,.10);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"DM Sans",Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+
+    /* Minimal header */
+    .top{
+      padding:26px 0 16px;
+    }
+    .top-inner{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .logo{
+      width:150px;
+      height:auto;
+      display:block;
+    }
+    .logo-fallback{
+      display:none;
+      font-family:"Space Grotesk",Arial,sans-serif;
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:-.05em;
+    }
+
+    /* Hero */
+    .hero{
+      padding:46px 0 28px;
+      text-align:center;
+    }
+    .eyebrow{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#747b7e;
+    }
+    h1{
+      font-family:"Space Grotesk",Arial,sans-serif;
+      font-size:clamp(40px,6vw,68px);
+      line-height:.95;
+      letter-spacing:-.06em;
+      max-width:760px;
+      margin:12px auto 12px;
+    }
+    .sub{
+      max-width:650px;
+      margin:0 auto;
+      font-size:16px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+
+    /* Video */
+    .video-wrap{
+      width:min(920px,100%);
+      margin:30px auto 0;
+    }
+    .video-shell{
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      background:#0d1012;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(17,20,22,.08);
+      aspect-ratio:16 / 9;
+    }
+    video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      background:#0d1012;
+    }
+
+    /* Placeholder shown until video URL is added */
+    .video-placeholder{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:28px;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(199,255,65,.08), transparent 40%),
+        linear-gradient(145deg,#0d1012,#171b1e);
+      color:#fff;
+      pointer-events:none;
+    }
+    .video-placeholder.hidden{display:none}
+    .placeholder-inner{max-width:530px}
+    .play{
+      width:70px;
+      height:70px;
+      margin:0 auto 16px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--lime);
+      color:#101416;
+      font-size:22px;
+      font-weight:900;
+    }
+    .placeholder-title{
+      font-family:"Space Grotesk",Arial,sans-serif;
+      font-size:22px;
+      letter-spacing:-.04em;
+      margin-bottom:7px;
+    }
+    .placeholder-copy{
+      color:#aeb5b8;
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    /* CTA — hidden until 30 sec of actual playback */
+    .cta-area{
+      max-width:600px;
+      margin:24px auto 0;
+      text-align:center;
+      opacity:0;
+      transform:translateY(12px);
+      pointer-events:none;
+      visibility:hidden;
+      transition:
+        opacity .6s ease,
+        transform .6s ease,
+        visibility 0s linear .6s;
+    }
+    .cta-area.visible{
+      opacity:1;
+      transform:none;
+      pointer-events:auto;
+      visibility:visible;
+      transition:
+        opacity .6s ease,
+        transform .6s ease,
+        visibility 0s linear 0s;
+    }
+    .cta-kicker{
+      font-size:13px;
+      color:#666d70;
+      margin-bottom:10px;
+    }
+    .cta-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:14px;
+      background:var(--ink);
+      color:#fff;
+      font-weight:800;
+      font-size:14px;
+      box-shadow:0 12px 34px rgba(17,20,22,.13);
+      transition:transform .18s ease,background .18s ease;
+    }
+    .cta-button:hover{
+      transform:translateY(-2px);
+      background:#202528;
+    }
+    .cta-note{
+      margin-top:9px;
+      font-size:11px;
+      color:#8a9093;
+    }
+
+    /* Very light footer */
+    footer{
+      padding:70px 0 35px;
+      text-align:center;
+      color:#979da0;
+      font-size:10px;
+    }
+
+    @media(max-width:620px){
+      .top{padding-top:20px}
+      .logo{width:125px}
+      .hero{padding-top:34px}
+      h1{font-size:46px}
+      .sub{font-size:14px}
+      .video-wrap{margin-top:24px}
+      .video-shell{border-radius:15px}
+      .play{width:58px;height:58px}
+      .placeholder-title{font-size:18px}
+      .cta-button{width:100%}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        transition:none!important;
+        animation:none!important;
+        scroll-behavior:auto!important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a href="#" aria-label="Launch House">
+      <img
+        src="assets/launch-house-logo.png"
+        alt="Launch House"
+        class="logo"
+        onerror="this.style.display='none';document.querySelector('.logo-fallback').style.display='block';"
+      >
+      <span class="logo-fallback">LAUNCH HOUSE</span>
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Free Training</div>
+
+      <h1>How To Launch A Startup In 2 Hours</h1>
+
+      <p class="sub">
+        See how to go from an idea to a first working version — even if you don't know how to code.
+      </p>
+
+      <div class="video-wrap">
+        <div class="video-shell">
+
+          <!--
+            Replace this source with your actual MP4/video URL.
+            Example:
+            <source src="https://your-domain.com/free-training.mp4" type="video/mp4">
+          -->
+          <video
+            id="trainingVideo"
+            controls
+            playsinline
+            preload="metadata"
+            poster=""
+          >
+            <source src="REPLACE_WITH_VIDEO_URL.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+
+          <!-- Placeholder disappears automatically when a real video is loaded -->
+          <div class="video-placeholder" id="videoPlaceholder">
+            <div class="placeholder-inner">
+              <div class="play">▶</div>
+              <div class="placeholder-title">Your free training goes here</div>
+              <div class="placeholder-copy">
+                Replace the video URL in the code. The button below the video will appear after 30 seconds of actual playback.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Hidden until 30 sec ACTUAL playback -->
+      <div class="cta-area" id="ctaArea">
+        <div class="cta-kicker">Ready to launch yours?</div>
+
+        <a
+          id="launchButton"
+          class="cta-button"
+          href="REPLACE_WITH_197_LANDING_PAGE_URL"
+        >
+          Launch My Startup →
+        </a>
+
+        <div class="cta-note">
+          Continue to the 2-hour Startup Build Sprint
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Launch House</div>
+</footer>
+
+<script>
+(function(){
+  const video = document.getElementById("trainingVideo");
+  const placeholder = document.getElementById("videoPlaceholder");
+  const cta = document.getElementById("ctaArea");
+
+  // The CTA appears after 30 seconds of actual playback.
+  const REQUIRED_PLAY_TIME = 30;
+
+  // Accumulated real playback time, excluding pauses.
+  let playedSeconds = 0;
+  let lastTime = null;
+  let unlocked = false;
+
+  function unlockCTA(){
+    if (unlocked) return;
+    unlocked = true;
+    cta.classList.add("visible");
+  }
+
+  // Hide placeholder once a real source is loaded.
+  video.addEventListener("loadeddata", function(){
+    placeholder.classList.add("hidden");
+  });
+
+  video.addEventListener("timeupdate", function(){
+    const current = video.currentTime;
+
+    if (!video.paused && !video.ended && lastTime !== null) {
+      const delta = current - lastTime;
+
+      // Ignore large jumps/seeking so a viewer cannot skip to 30 seconds.
+      if (delta > 0 && delta < 1.5) {
+        playedSeconds += delta;
+      }
+    }
+
+    lastTime = current;
+
+    if (playedSeconds >= REQUIRED_PLAY_TIME) {
+      unlockCTA();
+    }
+  });
+
+  video.addEventListener("play", function(){
+    if (lastTime === null) lastTime = video.currentTime;
+  });
+
+  video.addEventListener("pause", function(){
+    lastTime = null;
+  });
+
+  video.addEventListener("seeking", function(){
+    // Reset delta calculation while seeking.
+    lastTime = null;
+  });
+
+  video.addEventListener("ended", function(){
+    if (playedSeconds >= REQUIRED_PLAY_TIME) unlockCTA();
+  });
+
+})();
+</script>
+
+</body>
+</html>
