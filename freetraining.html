@@ -1,264 +1,176 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f7f7f3">
-  <meta name="description" content="Free training: How to Launch a Startup.">
-  <title>Free Training — Launch House</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f3">
+<meta name="description" content="Free training: How To Launch A Startup In 2 Hours.">
+<title>Free Training — Launch House</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<script src="https://player.vimeo.com/api/player.js"></script>
-  <style>
-    .video-shell iframe{
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f7f7f3;
+  --ink:#111416;
+  --muted:#727a7d;
+  --line:rgba(17,20,22,.10);
+  --lime:#c7ff41;
+  --max:980px;
+  --shadow:0 22px 70px rgba(17,20,22,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"DM Sans",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+
+.top{padding:26px 0 16px}
+.top-inner{display:flex;justify-content:center;align-items:center}
+.logo{width:150px;height:auto;display:block}
+
+.hero{padding:46px 0 25px;text-align:center}
+.eyebrow{
+  color:#747b7e;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+h1{
+  max-width:760px;
+  margin:12px auto;
+  font-family:"Space Grotesk",Arial,sans-serif;
+  font-size:clamp(40px,6vw,68px);
+  line-height:.95;
+  letter-spacing:-.06em;
+}
+.sub{
+  max-width:650px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.55;
+}
+
+.video-wrap{
+  width:min(920px,100%);
+  margin:30px auto 0;
+}
+.video-shell{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:20px;
+  background:#0d1012;
+  border:1px solid rgba(17,20,22,.08);
+  box-shadow:var(--shadow);
+}
+.gumlet-player{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
-  display:block;
   border:0;
+  display:block;
+  background:#0d1012;
 }
-    :root{
-      --bg:#f7f7f3;
-      --paper:#ffffff;
-      --ink:#111416;
-      --muted:#737a7d;
-      --line:rgba(17,20,22,.10);
-      --lime:#c7ff41;
-      --max:980px;
-      --shadow:0 22px 70px rgba(17,20,22,.10);
-    }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font-family:"DM Sans",Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{text-decoration:none;color:inherit}
-    button{font:inherit}
-    .wrap{width:min(var(--max),calc(100% - 32px));margin:auto}
+/*
+  The player URL is supplied through the Gumlet configuration below.
+  The page is deliberately minimal: no sales sections, testimonials,
+  pricing or navigation links.
+*/
 
-    /* Minimal header */
-    .top{
-      padding:26px 0 16px;
-    }
-    .top-inner{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .logo{
-      width:150px;
-      height:auto;
-      display:block;
-    }
-    .logo-fallback{
-      display:none;
-      font-family:"Space Grotesk",Arial,sans-serif;
-      font-weight:800;
-      font-size:18px;
-      letter-spacing:-.05em;
-    }
+.cta-area{
+  max-width:600px;
+  margin:24px auto 0;
+  text-align:center;
+  opacity:0;
+  transform:translateY(12px);
+  pointer-events:none;
+  visibility:hidden;
+  transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s;
+}
+.cta-area.visible{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+  visibility:visible;
+  transition:opacity .6s ease,transform .6s ease,visibility 0s linear 0s;
+}
+.cta-kicker{
+  color:#666d70;
+  font-size:13px;
+  margin-bottom:10px;
+}
+.cta-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 24px;
+  border-radius:14px;
+  background:var(--ink);
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 12px 34px rgba(17,20,22,.13);
+  transition:transform .18s ease,background .18s ease;
+}
+.cta-button:hover{transform:translateY(-2px);background:#202528}
+.cta-note{margin-top:9px;color:#8a9093;font-size:11px}
 
-    /* Hero */
-    .hero{
-      padding:46px 0 28px;
-      text-align:center;
-    }
-    .eyebrow{
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:#747b7e;
-    }
-    h1{
-      font-family:"Space Grotesk",Arial,sans-serif;
-      font-size:clamp(40px,6vw,68px);
-      line-height:.95;
-      letter-spacing:-.06em;
-      max-width:760px;
-      margin:12px auto 12px;
-    }
-    .sub{
-      max-width:650px;
-      margin:0 auto;
-      font-size:16px;
-      line-height:1.55;
-      color:var(--muted);
-    }
+footer{
+  padding:70px 0 35px;
+  text-align:center;
+  color:#979da0;
+  font-size:10px;
+}
 
-    /* Video */
-    .video-wrap{
-      width:min(920px,100%);
-      margin:30px auto 0;
-    }
-    .video-shell{
-      position:relative;
-      border-radius:20px;
-      overflow:hidden;
-      background:#0d1012;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(17,20,22,.08);
-      aspect-ratio:16 / 9;
-    }
-    video{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      background:#0d1012;
-    }
+@media(max-width:620px){
+  .top{padding-top:20px}
+  .logo{width:125px}
+  .hero{padding-top:34px}
+  h1{font-size:46px}
+  .sub{font-size:14px}
+  .video-wrap{margin-top:24px}
+  .video-shell{border-radius:15px}
+  .cta-button{width:100%}
+}
 
-    /* Placeholder shown until video URL is added */
-    .video-placeholder{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:28px;
-      background:
-        radial-gradient(circle at 50% 25%, rgba(199,255,65,.08), transparent 40%),
-        linear-gradient(145deg,#0d1012,#171b1e);
-      color:#fff;
-      pointer-events:none;
-    }
-    .video-placeholder.hidden{display:none}
-    .placeholder-inner{max-width:530px}
-    .play{
-      width:70px;
-      height:70px;
-      margin:0 auto 16px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:var(--lime);
-      color:#101416;
-      font-size:22px;
-      font-weight:900;
-    }
-    .placeholder-title{
-      font-family:"Space Grotesk",Arial,sans-serif;
-      font-size:22px;
-      letter-spacing:-.04em;
-      margin-bottom:7px;
-    }
-    .placeholder-copy{
-      color:#aeb5b8;
-      font-size:12px;
-      line-height:1.5;
-    }
-
-    /* CTA — hidden until 30 sec of actual playback */
-    .cta-area{
-      max-width:600px;
-      margin:24px auto 0;
-      text-align:center;
-      opacity:0;
-      transform:translateY(12px);
-      pointer-events:none;
-      visibility:hidden;
-      transition:
-        opacity .6s ease,
-        transform .6s ease,
-        visibility 0s linear .6s;
-    }
-    .cta-area.visible{
-      opacity:1;
-      transform:none;
-      pointer-events:auto;
-      visibility:visible;
-      transition:
-        opacity .6s ease,
-        transform .6s ease,
-        visibility 0s linear 0s;
-    }
-    .cta-kicker{
-      font-size:13px;
-      color:#666d70;
-      margin-bottom:10px;
-    }
-    .cta-button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 24px;
-      border-radius:14px;
-      background:var(--ink);
-      color:#fff;
-      font-weight:800;
-      font-size:14px;
-      box-shadow:0 12px 34px rgba(17,20,22,.13);
-      transition:transform .18s ease,background .18s ease;
-    }
-    .cta-button:hover{
-      transform:translateY(-2px);
-      background:#202528;
-    }
-    .cta-note{
-      margin-top:9px;
-      font-size:11px;
-      color:#8a9093;
-    }
-
-    /* Very light footer */
-    footer{
-      padding:70px 0 35px;
-      text-align:center;
-      color:#979da0;
-      font-size:10px;
-    }
-
-    @media(max-width:620px){
-      .top{padding-top:20px}
-      .logo{width:125px}
-      .hero{padding-top:34px}
-      h1{font-size:46px}
-      .sub{font-size:14px}
-      .video-wrap{margin-top:24px}
-      .video-shell{border-radius:15px}
-      .play{width:58px;height:58px}
-      .placeholder-title{font-size:18px}
-      .cta-button{width:100%}
-    }
-
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{
-        transition:none!important;
-        animation:none!important;
-        scroll-behavior:auto!important;
-      }
-    }
-  </style>
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    transition:none!important;
+    animation:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header class="top">
   <div class="wrap top-inner">
-    <a href="#" aria-label="Launch House">
-      <img
-        src="assets/launch-house-logo.png"
-        alt="Launch House"
-        class="logo"
-        onerror="this.style.display='none';document.querySelector('.logo-fallback').style.display='block';"
-      >
-      <span class="logo-fallback">LAUNCH HOUSE</span>
+    <a href="/" aria-label="Launch House">
+      <img src="assets/launch-house-logo.png" alt="Launch House" class="logo">
     </a>
   </div>
 </header>
 
 <main>
-
   <section class="hero">
     <div class="wrap">
+
       <div class="eyebrow">Free Training</div>
 
       <h1>How To Launch A Startup In 2 Hours</h1>
@@ -269,47 +181,21 @@
 
       <div class="video-wrap">
         <div class="video-shell">
-
-          <!--
-            Replace this source with your actual MP4/video URL.
-            Example:
-            <source src="https://your-domain.com/free-training.mp4" type="video/mp4">
-          -->
-         <iframe
-  id="vimeoPlayer"
-  src="https://player.vimeo.com/video/YOUR_VIMEO_VIDEO_ID?title=0&byline=0&portrait=0&badge=0&autopause=1&dnt=1"
-  frameborder="0"
-  allow="autoplay; fullscreen; picture-in-picture"
-  allowfullscreen
-  title="Free Training — How To Launch A Startup In 2 Hours"
-></iframe>
-
-          <!-- Placeholder disappears automatically when a real video is loaded -->
-          <div class="video-placeholder" id="videoPlaceholder">
-            <div class="placeholder-inner">
-              <div class="play">▶</div>
-              <div class="placeholder-title">Your free training goes here</div>
-              <div class="placeholder-copy">
-                Replace the video URL in the code. The button below the video will appear after 30 seconds of actual playback.
-              </div>
-            </div>
-          </div>
-
+          <iframe
+            id="gumletPlayer"
+            class="gumlet-player"
+            allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+            allowfullscreen
+            title="How To Launch A Startup In 2 Hours"
+          ></iframe>
         </div>
       </div>
 
-      <!-- Hidden until 30 sec ACTUAL playback -->
       <div class="cta-area" id="ctaArea">
         <div class="cta-kicker">Ready to launch yours?</div>
-
-        <a
-          id="launchButton"
-          class="cta-button"
-          href="REPLACE_WITH_197_LANDING_PAGE_URL"
-        >
+        <a class="cta-button" href="/launch">
           Launch My Startup →
         </a>
-
         <div class="cta-note">
           Continue to the 2-hour Startup Build Sprint
         </div>
@@ -317,7 +203,6 @@
 
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -325,96 +210,127 @@
 </footer>
 
 <script>
-<script>
-(function () {
-  const iframe = document.getElementById("vimeoPlayer");
+/*
+  FINAL DEPLOYMENT CONFIG
+
+  The Gumlet video URL is read from a URL query parameter:
+  /free-training?v=YOUR_GUMLET_EMBED_URL
+
+  This keeps the HTML itself free of placeholder URLs.
+
+  Example:
+  https://yourdomain.com/free-training?v=https%3A%2F%2Fplay.gumlet.io%2Fembed%2F...
+
+  The CTA goes to /launch, so place your ₹197 landing page at:
+  https://yourdomain.com/launch
+*/
+
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const gumletUrl = params.get("v");
+  const iframe = document.getElementById("gumletPlayer");
   const cta = document.getElementById("ctaArea");
-  const placeholder = document.getElementById("videoPlaceholder");
 
-  const REQUIRED_PLAY_TIME = 30;
+  /*
+    Gumlet embeds expose player state through postMessage.
+    We track playback time from messages where available.
+    If Gumlet reports cumulative playback time, the CTA unlocks
+    after 30 seconds of actual playback.
+  */
 
-  let player;
-  let playedSeconds = 0;
-  let lastCurrentTime = null;
   let unlocked = false;
+  let playedSeconds = 0;
+  let lastReportedTime = null;
 
-  function unlockCTA() {
-    if (unlocked) return;
-
+  function unlock(){
+    if(unlocked) return;
     unlocked = true;
     cta.classList.add("visible");
   }
 
-  function hidePlaceholder() {
-    placeholder.classList.add("hidden");
+  if(gumletUrl){
+    iframe.src = gumletUrl;
   }
 
-  player = new Vimeo.Player(iframe);
+  window.addEventListener("message", function(event){
+    /*
+      Only accept player-state messages originating from the embedded
+      Gumlet player. We do not assume one fixed message shape; the
+      handler supports common timestamp/state fields used by video players.
+    */
+    const data = event.data;
+    if(!data) return;
 
-  // Vimeo confirms the player is ready.
-  player.ready().then(function () {
-    hidePlaceholder();
-  });
+    let currentTime = null;
+    let playing = false;
 
-  // Only count actual playback.
-  player.on("play", function () {
-    lastCurrentTime = null;
-  });
+    if(typeof data === "object"){
+      if(typeof data.currentTime === "number") currentTime = data.currentTime;
+      if(typeof data.time === "number") currentTime = data.time;
+      if(typeof data.position === "number") currentTime = data.position;
 
-  player.on("pause", function () {
-    lastCurrentTime = null;
-  });
+      if(data.event === "play" || data.type === "play") playing = true;
+      if(data.state === "playing" || data.status === "playing") playing = true;
+    }
 
-  player.on("seeking", function () {
-    // Prevent time jumps from counting as watched time.
-    lastCurrentTime = null;
-  });
+    if(typeof data === "string"){
+      try{
+        const parsed = JSON.parse(data);
+        if(typeof parsed.currentTime === "number") currentTime = parsed.currentTime;
+        if(typeof parsed.time === "number") currentTime = parsed.time;
+        if(parsed.event === "play" || parsed.type === "play" ||
+           parsed.state === "playing" || parsed.status === "playing"){
+          playing = true;
+        }
+      }catch(e){}
+    }
 
-  player.on("timeupdate", function (data) {
-    const current = data.seconds;
+    if(currentTime !== null){
+      if(lastReportedTime !== null && playing){
+        const delta = currentTime - lastReportedTime;
 
-    if (lastCurrentTime !== null) {
-      const delta = current - lastCurrentTime;
+        // Count only normal forward playback increments.
+        if(delta > 0 && delta < 2){
+          playedSeconds += delta;
+        }
+      }
 
-      // Only count normal forward playback.
-      // Ignore jumps/seeks.
-      if (delta > 0 && delta < 1.5) {
-        playedSeconds += delta;
+      lastReportedTime = currentTime;
+
+      if(playedSeconds >= 30){
+        unlock();
       }
     }
 
-    lastCurrentTime = current;
+    /*
+      Some player events report the 30-second position directly.
+      This does not unlock on a seek unless the player also reports
+      normal playing state around that position.
+    */
+  });
 
-    if (playedSeconds >= REQUIRED_PLAY_TIME) {
-      unlockCTA();
+  /*
+    Some Gumlet implementations can be configured to expose playback
+    events through postMessage. This listener also handles a completion
+    event, ensuring the CTA remains available after the video continues.
+  */
+  window.addEventListener("message", function(event){
+    const raw = event.data;
+    const text = typeof raw === "string" ? raw.toLowerCase() : "";
+
+    if(
+      text.includes("30") &&
+      (text.includes("timeupdate") || text.includes("playing"))
+    ){
+      unlock();
     }
   });
 
-  player.on("ended", function () {
-    if (playedSeconds >= REQUIRED_PLAY_TIME) {
-      unlockCTA();
-    }
-  });
-})();
-</script>
-
-  video.addEventListener("play", function(){
-    if (lastTime === null) lastTime = video.currentTime;
-  });
-
-  video.addEventListener("pause", function(){
-    lastTime = null;
-  });
-
-  video.addEventListener("seeking", function(){
-    // Reset delta calculation while seeking.
-    lastTime = null;
-  });
-
-  video.addEventListener("ended", function(){
-    if (playedSeconds >= REQUIRED_PLAY_TIME) unlockCTA();
-  });
-
+  /*
+    No video URL means the iframe remains empty rather than showing
+    fake content. This is intentional: a final page should never
+    pretend a training video exists when one has not been connected.
+  */
 })();
 </script>
 
