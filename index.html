@@ -1256,24 +1256,263 @@
       </div>
     </section>
 
-    <!-- ROADMAP -->
-    <section class="section roadmap">
-      <div class="wrap">
-        <div class="section-head" style="margin-bottom:0">
-          <div class="eyebrow">The next 30–60 days</div>
-          <h2 class="display">You won't have to guess what to do next.</h2>
-          <p>Once your startup is live, follow a simple plan to get your first users, learn from them, improve the product, and start selling.</p>
-        </div>
-        <div class="roadmap-grid">
-          <div class="week"><span>Week 1</span><h3>Launch + learn</h3><p>Put the first version in front of real people and collect feedback.</p></div>
-          <div class="week"><span>Week 2</span><h3>Get users</h3><p>Start reaching your first audience and track what gets attention.</p></div>
-          <div class="week"><span>Weeks 3–4</span><h3>Improve</h3><p>Fix what matters. Make the product and page clearer.</p></div>
-          <div class="week"><span>Days 30–60</span><h3>Sell</h3><p>Keep what works, test new channels, and work toward paying customers.</p></div>
-        </div>
-        <div class="roadmap-note">The exact path depends on the startup you choose. The goal is simple: get your first real users, then your first paying customers.</div>
-      </div>
-    </section>
+   <!-- WHAT YOU'LL LEARN / WHAT YOU GAIN SECTION -->
+<section class="learn-section">
+  <div class="learn-container">
 
+    <div class="learn-eyebrow">
+      <span class="learn-eyebrow-dot"></span>
+      What You Gain
+    </div>
+
+    <h2 class="learn-heading">
+      What You’ll Learn Inside The Webinar
+    </h2>
+
+    <div class="learn-grid">
+
+      <!-- 01 -->
+      <article class="learn-item">
+        <div class="learn-number">1</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">The Founder Mindset</h3>
+
+        <ul class="learn-list">
+          <li>The psychology of execution</li>
+          <li>How to develop founder-level decision making</li>
+          <li>How to train yourself to take action fast</li>
+        </ul>
+      </article>
+
+      <!-- 02 -->
+      <article class="learn-item">
+        <div class="learn-number">2</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">Finding Ideas That Make Big Money</h3>
+
+        <ul class="learn-list">
+          <li>How to identify high-potential startup opportunities</li>
+          <li>How to validate ideas before building anything</li>
+          <li>The “market pain” framework used by successful startups</li>
+        </ul>
+      </article>
+
+      <!-- 03 -->
+      <article class="learn-item">
+        <div class="learn-number">3</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">Bootstrapping a Startup</h3>
+
+        <ul class="learn-list">
+          <li>How modern startups launch with minimal investment</li>
+          <li>Tools and systems founders use today</li>
+          <li>How to create MVPs quickly</li>
+        </ul>
+      </article>
+
+      <!-- 04 -->
+      <article class="learn-item">
+        <div class="learn-number">4</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">Marketing Skill</h3>
+
+        <ul class="learn-list">
+          <li>Content, ads, organic growth &amp; positioning basics</li>
+          <li>How to attract enough buyers</li>
+          <li>Real customer acquisition strategies used by startups</li>
+        </ul>
+      </article>
+
+      <!-- 05 -->
+      <article class="learn-item">
+        <div class="learn-number">5</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">Scaling</h3>
+
+        <ul class="learn-list">
+          <li>How startups generate recurring revenue</li>
+          <li>Hiring basics and building teams</li>
+          <li>Operations, execution &amp; growth frameworks</li>
+        </ul>
+      </article>
+
+      <!-- 06 -->
+      <article class="learn-item">
+        <div class="learn-number">6</div>
+        <div class="learn-divider"></div>
+
+        <h3 class="learn-title">Funding</h3>
+
+        <ul class="learn-list">
+          <li>How startups raise funding</li>
+          <li>Startup valuation basics</li>
+          <li>The roadmap to build a ₹100 crore company</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .learn-section {
+    width: 100%;
+    background: #f3f4f7;
+    padding: 96px 24px 110px;
+  }
+
+  .learn-container {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+  }
+
+  .learn-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    color: #48515c;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .learn-eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #101318;
+    display: inline-block;
+    position: relative;
+  }
+
+  .learn-eyebrow-dot::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: #f3f4f7;
+  }
+
+  .learn-heading {
+    margin: 0;
+    max-width: 1000px;
+    color: #191c23;
+    font-family: Arial, sans-serif;
+    font-size: clamp(48px, 5.2vw, 76px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .learn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 28px;
+    row-gap: 118px;
+    margin-top: 78px;
+  }
+
+  .learn-item {
+    min-width: 0;
+  }
+
+  .learn-number {
+    color: #0e1014;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -0.04em;
+  }
+
+  .learn-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(14, 16, 20, 0.14);
+    margin-bottom: 24px;
+  }
+
+  .learn-title {
+    margin: 0 0 18px;
+    color: #11151b;
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+
+  .learn-list {
+    margin: 0;
+    padding-left: 21px;
+    color: #26313d;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
+  .learn-list li {
+    margin-bottom: 2px;
+    padding-left: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .learn-section {
+      padding: 76px 24px 88px;
+    }
+
+    .learn-heading {
+      font-size: clamp(42px, 7vw, 62px);
+    }
+
+    .learn-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 80px;
+      margin-top: 60px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .learn-section {
+      padding: 62px 20px 72px;
+    }
+
+    .learn-eyebrow {
+      font-size: 14px;
+    }
+
+    .learn-heading {
+      font-size: clamp(38px, 11vw, 52px);
+      line-height: 1;
+    }
+
+    .learn-grid {
+      grid-template-columns: 1fr;
+      row-gap: 58px;
+      margin-top: 50px;
+    }
+
+    .learn-number {
+      font-size: 48px;
+    }
+
+    .learn-title {
+      font-size: 21px;
+    }
+
+    .learn-list {
+      font-size: 14px;
+    }
+  }
+</style>
     <!-- VALUE -->
     <section class="section value" id="offer">
       <div class="wrap value-grid">
